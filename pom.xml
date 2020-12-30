@@ -27,6 +27,7 @@
     <!-- Configs -->
     <child.openmrsconfigVersion>1.0.0-SNAPSHOT</child.openmrsconfigVersion>
     <child.bahmniconfigVersion>1.0.0-SNAPSHOT</child.bahmniconfigVersion>
+    <child.odooconfigVersion>1.0.0-SNAPSHOT</child.odooconfigVersion>
 
   </properties>
 
@@ -42,6 +43,12 @@
       <artifactId>bahmni-config-c2c</artifactId>
       <type>zip</type>
       <version>${child.bahmniconfigVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.mekomsolutions</groupId>
+      <artifactId>odoo-config-c2c</artifactId>
+      <type>zip</type>
+      <version>${child.odooconfigVersion}</version>
     </dependency>
   </dependencies>
 
