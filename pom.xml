@@ -61,7 +61,7 @@
         <!-- OpenMRS child config -->
         <executions>
           <execution>
-            <id>unpack-openmrs-config</id>
+            <id>unpack-openmrs-config-c2c</id>
             <phase>package</phase>
             <goals>
               <goal>unpack-dependencies</goal>
@@ -73,9 +73,9 @@
               <includeArtifactIds>openmrs-config-c2c</includeArtifactIds>
             </configuration>
           </execution>
-        <!-- Bahmni child config -->
+          <!-- Bahmni child config -->
           <execution>
-            <id>unpack-bahmni-config</id>
+            <id>unpack-bahmni-config-c2c</id>
             <phase>package</phase>
             <goals>
               <goal>unpack-dependencies</goal>
@@ -87,12 +87,26 @@
               <includeArtifactIds>bahmni-config-c2c</includeArtifactIds>
             </configuration>
           </execution>
+          <!-- Odoo child config -->
+          <execution>
+            <id>unpack-odoo-config-c2c</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.odooconfigDir}</outputDirectory>
+              <includeArtifactIds>odoo-config-c2c</includeArtifactIds>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
 
-   <repositories>
+  <repositories>
     <repository>
       <id>mks-nexus-public</id>
       <url>https://nexus.mekomsolutions.net/repository/maven-public/</url>
