@@ -1,0 +1,24 @@
+---
+apps:
+  proxy:
+    enabled: true
+  appointments:
+    enabled: true
+  bahmni_config:
+    enabled: true
+  bahmni_filestore:
+    enabled: true
+  bahmniapps:
+    enabled: true
+  mysql:
+    enabled: true
+  odoo:
+    enabled: true
+  odoo_connect:
+    enabled: true
+  openmrs:
+    enabled: true
+  postgresql:
+    enabled: true
+  openelis:
+    enabled: true
