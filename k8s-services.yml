@@ -22,3 +22,5 @@ apps:
     enabled: true
   openelis:
     enabled: true
+  eip_client:
+    enabled: true
