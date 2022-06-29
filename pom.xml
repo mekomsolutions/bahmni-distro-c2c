@@ -29,6 +29,10 @@
     <child.bahmniconfigVersion>1.2.0-SNAPSHOT</child.bahmniconfigVersion>
     <child.odooconfigVersion>1.2.0-SNAPSHOT</child.odooconfigVersion>
 
+    <!-- Odoo addons -->
+    <!-- Providing recent Odoo Iniz version as the Haiti one is too old. This property should be removed as soon as Haiti is updated. -->
+    <odooInitializerVersion>2.1.0</odooInitializerVersion>
+
   </properties>
 
   <dependencies>
