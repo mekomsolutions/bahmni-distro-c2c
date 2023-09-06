@@ -26,3 +26,21 @@ mvn clean package
 <br/>The OpenMRS bespoke configuration (more [here](https://github.com/mekomsolutions/openmrs-config-c2c)) to be processed by the [Initializer module](https://github.com/mekomsolutions/openmrs-module-initializer).
 * `openmrs_core/`
 The target version of OpenMRS Core.
+
+## Release Notes
+
+### Version 1.4.0
+* Activated billing status widget
+* Added bulk cancel orders Odoo add-on
+* Patient header to display weight
+* Ability to close visits after 12h of inactivity
+* Fixed EIP data corrupted after power cut
+* Added additional lab tests & services
+* Added new concept - 'IUD' to family planning - FP administer
+* Adjustment of visit types to add field/at clinic options
+
+### Version 1.3.0
+* Removed pricing information from Odoo Config
+
+### Version 1.2.0
+* Made HSC form compatible with C2C
