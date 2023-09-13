@@ -35,7 +35,7 @@ The target version of OpenMRS Core.
 * Patient header to display weight
 * Ability to close visits after 12h of inactivity
 * Fixed EIP data corrupted after power cut
-* Added additional lab tests & services
+* Added more tests and services
 * Added new concept - 'IUD' to family planning - FP administer
 * Adjustment of visit types to add field/at clinic options
 
