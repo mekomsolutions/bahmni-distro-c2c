@@ -29,6 +29,12 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
+### Version 1.5.0
+* Add vaccination and family planning community patient lists
+* Fix H-pylori and HCG lab results
+* Fix drug name presentation for multi-ingredient medications
+* Add Missing Drugs and Medical Supplies
+
 ### Version 1.4.0
 * Activated billing status widget
 * Added bulk cancel orders Odoo add-on
