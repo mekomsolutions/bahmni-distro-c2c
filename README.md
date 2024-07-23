@@ -29,6 +29,11 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
+### Version 1.6.0
+* Fixed Metronidazole drug variant concept uuids.
+* Removed 'Sayana Press' from drugs containing the term.
+* Added answers to Human Chorionic Gonadotrophin concept
+
 ### Version 1.5.1
 * Fixed Metronidazole drug variant concept uuids.
 * Removed 'Sayana Press' from drugs containing the term.
