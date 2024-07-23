@@ -29,6 +29,18 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
+### Version 1.6.0
+* Archived list of drugs in Odoo and Bahmni
+* Added a question in the Vaccination form 'Is the child fully vaccinated?'
+* Fixed Sync issue of Amoxicillin syrup, and metronidazole & Nystatin ovule
+* Fixed the MSPP Report Emergency Section figures to reflect the actual urgency
+* Enabled MSPP Vaccinations report to capture data on 'Fully vaccinated patients'
+* Scheduled task was set to run every hour by default to 'Close stale visits'
+* Documented the process to extract and upload data with centralized Ozone Analytics
+* Distro was updated to use latest Ozone Analytics
+* Fixed 404 error on C2C Analytics servers
+* Modified Lab Tests in OpenELIS
+
 ### Version 1.5.1
 * Fixed Metronidazole drug variant concept uuids.
 * Removed 'Sayana Press' from drugs containing the term.
