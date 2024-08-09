@@ -29,6 +29,12 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
+### Version 1.6.2
+* Updated some lab tests
+
+### Version 1.6.1
+* Updated vaccinations concept set
+
 ### Version 1.6.0
 * Archived list of drugs in Odoo and Bahmni
 * Added a question in the Vaccination form 'Is the child fully vaccinated?'
