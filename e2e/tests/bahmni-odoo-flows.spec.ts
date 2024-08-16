@@ -10,11 +10,11 @@ test.beforeEach(async ({ page }) => {
   odoo = new Odoo(page);
 
   await bahmni.login();
-  await expect(page.getByText('Registration')).toBeVisible();
-  await expect(page.getByText('Clinical')).toBeVisible();
-  await expect(page.getByText('Admin')).toBeVisible();
-  await expect(page.getByText('Appointment Scheduling')).toBeVisible();
-  await expect(page.getByText('Patient Documents')).toBeVisible();
+  await expect(page.getByText(/registration/i)).toBeVisible();
+  await expect(page.getByText(/linical/i)).toBeVisible();
+  await expect(page.getByText(/admin/i)).toBeVisible();
+  await expect(page.getByText(/appointment scheduling/i)).toBeVisible();
+  await expect(page.getByText(/patient documents/i)).toBeVisible();
 });
 
 test('Ordering a lab test for a Bahmni patient creates the corresponding Odoo customer with a filled quotation.', async ({ page }) => {
@@ -25,7 +25,7 @@ test('Ordering a lab test for a Bahmni patient creates the corresponding Odoo cu
   await bahmni.goToLabSamples();
   await page.getByText('Blood', { exact: true }).click();
   await page.getByText('Malaria').click();
-  await bahmni.saveLabOrder();
+  await bahmni.saveOrder();
 
   // verify
   await odoo.open();
