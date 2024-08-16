@@ -6,6 +6,10 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
+node_modules/
+test-results/
+playwright-report/
+playwright/.cache/
 .mvn/timing.properties
 **/.DS_Store
 .idea/
