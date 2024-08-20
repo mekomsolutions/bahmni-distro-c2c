@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByText(/patient documents/i)).toBeVisible();
 });
 
-test('Record, revise and discontinue a drug order.', async ({ page }) => {
+test('Create, revise and discontinue a drug order.', async ({ page }) => {
   // setup
   await bahmni.registerPatient();
 
@@ -35,16 +35,19 @@ test('Record, revise and discontinue a drug order.', async ({ page }) => {
   await page.getByRole('button', { name: 'Add' }).click();
   await bahmni.saveOrder();
 
-  // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  const drugNameSelector = await page.locator('treatment-table td.drug.active-drug span');
-  const medicationDetailsSelector = await page.locator('#dashboard-treatments td.dosage  span:nth-child(1)');
+  // verify creation
+  const drugNameSelector = await page.locator('#ordered-drug-orders strong.drug-name').first();
+  const medicationDetailsSelector = await page.locator('#ordered-drug-orders div.drug-details').first();
   await expect(drugNameSelector).toHaveText('Aspirine Co 81mg (Comprime)');
   await expect(medicationDetailsSelector).toContainText('2 Application(s)');
   await expect(medicationDetailsSelector).toContainText('Q3H');
   await expect(medicationDetailsSelector).toContainText('Estomac vide');
   await expect(medicationDetailsSelector).toContainText('Topique');
+  await page.locator('#dashboard-link span.patient-name').click();
+  const medicationSelector = await page.locator('treatment-table td.drug.active-drug span');
+  await expect(medicationSelector).toHaveText('Aspirine Co 81mg (Comprime)');
 
+  // verify revision
   await page.locator('#view-content :nth-child(1).btn--success').click();
   await page.getByText('Medications', { exact: true }).click();
   await page.locator('#ordered-drug-orders button:nth-child(1) i').first().click();
@@ -55,7 +58,6 @@ test('Record, revise and discontinue a drug order.', async ({ page }) => {
   await page.locator('#route').selectOption('string:Inhalation');
   await page.getByRole('button', { name: 'Add' }).click();
   await bahmni.saveOrder();
-  await page.locator('#dashboard-link span.patient-name').click();
   await expect(medicationDetailsSelector).not.toContainText('2 Application(s)');
   await expect(medicationDetailsSelector).toContainText('4 Comprime(s)');
   await expect(medicationDetailsSelector).not.toContainText('Q3H');
@@ -63,15 +65,14 @@ test('Record, revise and discontinue a drug order.', async ({ page }) => {
   await expect(medicationDetailsSelector).not.toContainText('Ampoule(s)');
   await expect(medicationDetailsSelector).toContainText('Inhalation');
 
-  await page.locator('#view-content :nth-child(1).btn--success').click();
-  await page.getByText('Medications', { exact: true }).click();
-  const drugSelector = await page.locator('strong.drug-name').first();
-  await expect(drugSelector).toContainText('Aspirine Co 81mg (Comprime)');
+  // verify cancellation
+  await expect(drugNameSelector).toContainText('Aspirine Co 81mg (Comprime)');
   await page.getByRole('button', { name: 'Stop' }).first().click();
-  await page.getByPlaceholder('Notes').clear();
   await page.getByPlaceholder('Notes').fill('Patient allergic to medicine');
   await bahmni.saveOrder();
-  await expect(page.getByText(/no recent treatments/i)).toBeVisible();
+  await page.locator('#dashboard-link span.patient-name').click();
+  const medicationStatus = await page.locator('#dashboard-treatments span.discontinued-text').first();
+  await expect(medicationStatus).toContainText('Stopped');
 });
 
 test.afterEach(async ({ page }) => {

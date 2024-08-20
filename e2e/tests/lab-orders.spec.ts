@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByText(/patient documents/i)).toBeVisible();
 });
 
-test('Record, revise and discontinue lab tests.', async ({ page }) => {
+test('Create, revise and discontinue lab tests.', async ({ page }) => {
   // setup
   await bahmni.registerPatient();
 
@@ -32,7 +32,7 @@ test('Record, revise and discontinue lab tests.', async ({ page }) => {
   await page.getByText('Serial sputum bacilloscopy').click();
   await bahmni.saveOrder();
 
-  // verify
+  // verify creation
   await page.locator('#dashboard-link span.patient-name').click();
   await expect(page.locator('#Lab-Orders').getByText('Malaria')).toBeVisible();
   await expect(page.locator('#Lab-Orders').getByText('Gravindex')).toBeVisible();
@@ -40,6 +40,7 @@ test('Record, revise and discontinue lab tests.', async ({ page }) => {
   await expect(page.locator('#Lab-Orders').getByText('Bacteria')).toBeVisible();
   await expect(page.locator('#Lab-Orders').getByText('Serial sputum bacilloscopy')).toBeVisible();
 
+  // verify revision
   await page.locator('#view-content :nth-child(1).btn--success').click();
   await page.getByText('Orders', { exact: true }).click();
   await page.getByText('Blood', { exact: true }).click();
@@ -52,6 +53,7 @@ test('Record, revise and discontinue lab tests.', async ({ page }) => {
   await page.getByText('Stool Parasites').click();
   await bahmni.saveOrder(); 
 
+  // verify revision
   await page.locator('#dashboard-link span.patient-name').click();
   await expect(page.locator('#Lab-Orders').getByText('Malaria')).not.toBeVisible();
   await expect(page.locator('#Lab-Orders').getByText('Blood Sugar')).toBeVisible();
@@ -61,6 +63,18 @@ test('Record, revise and discontinue lab tests.', async ({ page }) => {
   await expect(page.locator('#Lab-Orders').getByText('Stool Parasites')).toBeVisible();
   await expect(page.locator('#Lab-Orders').getByText('Bacteria')).toBeVisible();
   await expect(page.locator('#Lab-Orders').getByText('Serial sputum bacilloscopy')).toBeVisible();
+
+  // verify cancellation
+  await page.locator('#view-content :nth-child(1).btn--success').click();
+  await page.getByText('Orders', { exact: true }).click();
+  await page.locator('#selected-orders li').filter({ hasText: 'Blood Sugar' }).locator('i').nth(1).click();
+  await page.locator('#selected-orders li').filter({ hasText: 'Urine Colour' }).locator('i').nth(1).click();
+  await page.locator('#selected-orders li').filter({ hasText: 'Stool Colour' }).locator('i').nth(1).click();
+  await bahmni.saveOrder();
+  await page.locator('#dashboard-link span.patient-name').click();
+  await expect(page.locator('#Lab-Orders').getByText('Blood Sugar')).not.toBeVisible();
+  await expect(page.locator('#Lab-Orders').getByText('Urine Colour')).not.toBeVisible();
+  await expect(page.locator('#Lab-Orders').getByText('Stool Colour')).not.toBeVisible();
 });
 
 test.afterEach(async ({ page }) => {
