@@ -60,8 +60,18 @@ export class Bahmni {
     await expect(this.page.getByText('Lab Samples')).toBeVisible();
   }
 
-  async saveLabOrder() {
+  async goToMedications() {
+    await this.page.locator('i.fa.fa-home').click();
+    await this.page.getByRole('link', { name: 'Clinical' }).click();
+    await this.searchPatient();
+    await this.page.locator('#view-content :nth-child(1).btn--success').click();
+    await this.page.getByText('Medications', { exact: true }).click();
+    await expect(this.page.getByText('Order Drug')).toBeVisible();
+    await expect(this.page.getByText('Order an Order Set')).toBeVisible();
+  }
+
+  async saveOrder() {
     await this.page.getByRole('button', { name: 'Save' }).click();
-    await expect(this.page.getByText('Saved')).toBeVisible();
+    await expect(this.page.getByText('Saved', {exact: true})).toBeVisible();
   }
 }
