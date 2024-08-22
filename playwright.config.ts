@@ -27,7 +27,6 @@ const config: PlaywrightTestConfig = {
           slowMo: 500
         }
       },
-      
     },
   ],
 };
