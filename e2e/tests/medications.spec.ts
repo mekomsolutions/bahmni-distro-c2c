@@ -19,21 +19,9 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await bahmni.registerPatient();
 
   // replay
+  await bahmni.goToHomePage();
   await bahmni.goToMedications();
-  await page.locator('#drug-name').type('Aspirine Co 81mg');
-  await page.getByText('Aspirine Co 81mg (Comprime)').click();
-  await page.locator('#uniform-dose').fill('2');
-  await page.locator('#uniform-dose-unit').selectOption('string:Application(s)');
-  await page.locator('#frequency').selectOption('string:Q3H');
-  await page.locator('#route').selectOption('string:Topique');
-  await page.locator('#start-date').fill('2024-08-16');
-  await page.locator('#duration').fill('5');
-  await page.locator('#duration-unit').selectOption('string:Semaine(s)');
-  await page.locator('#total-quantity-unit').selectOption('string:Ampoule(s)');
-  await page.locator('#instructions').selectOption('string:Estomac vide');
-  await page.locator('#additional-instructions').fill('Take after a meal');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await bahmni.saveOrder();
+  await bahmni.createMedication();
 
   // verify creation
   const drugNameSelector = await page.locator('#ordered-drug-orders strong.drug-name').first();

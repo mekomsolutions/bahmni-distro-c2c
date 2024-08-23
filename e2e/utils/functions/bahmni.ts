@@ -4,6 +4,7 @@ import { BAHMNI_URL } from '../configs/globalSetup';
 export var patientName = {
   givenName : '',
   familyName : '',
+  updatedGivenName: '',
 }
 
 export class Bahmni {
@@ -20,15 +21,16 @@ export class Bahmni {
 
   async registerPatient() {
     patientName = {
-      givenName : `e2e_test_${Math.floor(Math.random() * 10000)}`,
-      familyName : `${(Math.random() + 1).toString(36).substring(2)}`,
+      givenName : `E2e_test_${Array.from({ length: 4 }, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('')}`,
+      familyName : `${Array.from({ length: 8 }, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('')}`, 
+      updatedGivenName : `${Array.from({ length: 8 }, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('')}`,
     }
     await this.page.goto(`${BAHMNI_URL}/bahmni/registration`);
     await this.page.locator('a').filter({ hasText: 'Create New' }).click();
     await this.page.locator('#givenName').fill(`${patientName.givenName}`);
     await this.page.locator('#familyName').fill(`${patientName.familyName}`);
     await this.page.locator('#gender').selectOption('F');
-    await this.page.locator('#ageYears').fill('34');
+    await this.page.locator('#ageYears').fill(`${Math.floor(Math.random() * 99)}`);
     await this.page.locator('#view-content div>ul>li button').click();
     await expect(this.page.getByRole('button', { name: 'Save' })).toBeEnabled();
     await this.page.getByRole('button', { name: 'Priority' }).click();
@@ -41,6 +43,17 @@ export class Bahmni {
     await this.page.getByText(`${patientName.givenName + ' ' + patientName.familyName}`).click();
   }
 
+  async updatePatientDetails() {
+    await this.page.getByRole('link', { name: 'Registration' }).click();
+    await this.page.locator('#name').fill(`${patientName.familyName}`);
+    await this.page.locator('form[name="searchByNameForm"]').getByRole('button', { name: 'Search' }).click();
+    await this.page.locator('#view-content td:nth-child(1) a').click();
+    await this.page.locator('#givenName').clear();
+    await this.page.locator('#givenName').fill(`${patientName.updatedGivenName}`);
+    await this.page.getByRole('button', { name: 'Save' }).click();
+    patientName.givenName = `${patientName.updatedGivenName}`;
+  };
+
   async voidPatient() {
     await this.page.goto(`${BAHMNI_URL}/openmrs/admin/patients/index.htm`);
     await this.page.getByPlaceholder(' ').type(`${patientName.familyName}`);
@@ -52,22 +65,82 @@ export class Bahmni {
   }
 
   async goToLabSamples() {
-    await this.page.locator('i.fa.fa-home').click();
     await this.page.getByRole('link', { name: 'Clinical' }).click();
     await this.searchPatient();
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
-    await this.page.getByText('Orders', { exact: true }).click();
+    await this.page.locator('#opd-tabs').getByText('Orders').click();
     await expect(this.page.getByText('Lab Samples')).toBeVisible();
   }
 
+  async createLabOrder() {
+    await this.page.getByText('Blood', { exact: true }).click();
+    await this.page.getByText('Malaria').click();
+    await this.saveOrder();
+  }
+
+  async reviseLabOrder() {
+    await this.page.getByText('Blood', { exact: true }).click();
+    await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
+    await this.page.getByText('Hematocrit').click();
+    await this.saveOrder();
+  }
+
+  async discontinueLabOrder() {
+    await this.page.getByText('Blood', { exact: true }).click();
+    await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
+    await this.saveOrder();
+  }
+
+  async goToHomePage() {
+    await this.page.goto(`${BAHMNI_URL}/bahmni/home/`);
+    await expect(this.page).toHaveURL(/.*home/);
+  }
+
   async goToMedications() {
-    await this.page.locator('i.fa.fa-home').click();
     await this.page.getByRole('link', { name: 'Clinical' }).click();
     await this.searchPatient();
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
-    await this.page.getByText('Medications', { exact: true }).click();
+    await this.page.locator('#opd-tabs').getByText('Medications').click();
     await expect(this.page.getByText('Order Drug')).toBeVisible();
     await expect(this.page.getByText('Order an Order Set')).toBeVisible();
+  }
+
+  async createMedication() {
+    await this.page.locator('#drug-name').type('Aspirine Co 81mg');
+    await this.page.getByText('Aspirine Co 81mg (Comprime)').click();
+    await this.page.locator('#uniform-dose').fill('2');
+    await this.page.locator('#uniform-dose-unit').selectOption('string:Application(s)');
+    await this.page.locator('#frequency').selectOption('string:Q3H');
+    await this.page.locator('#route').selectOption('string:Topique');
+    await this.page.locator('#start-date').fill('2024-08-16');
+    await this.page.locator('#duration').fill('5');
+    await this.page.locator('#duration-unit').selectOption('string:Semaine(s)');
+    await this.page.locator('#total-quantity-unit').selectOption('string:Ampoule(s)');
+    await this.page.locator('#instructions').selectOption('string:Estomac vide');
+    await this.page.locator('#additional-instructions').fill('Take after a meal');
+    await expect(this.page.locator('#quantity')).toHaveValue('560');
+    await this.page.getByRole('button', { name: 'Add' }).click();
+    await this.saveOrder();
+  }
+
+  async editMedicationDetails() {
+    await this.page.locator('i.fa.fa-edit').first().click();
+    await this.page.locator('#uniform-dose').clear();
+    await this.page.locator('#uniform-dose').fill('4');
+    await this.page.locator('#frequency').selectOption('string:Q4H');
+    await this.page.locator('#uniform-dose-unit').selectOption('string:Comprime(s)');
+    await this.page.locator('#route').selectOption('string:Inhalation');
+    await this.page.getByRole('button', { name: 'Add' }).click();
+    await this.saveOrder();
+  }
+
+  async discontinueMedication() {
+    await this.page.getByRole('button', { name: 'Stop' }).first().click();
+    await this.page.getByPlaceholder('Notes').fill('Patient allergic to medicine');
+    await this.saveOrder();
+    await this.page.locator('#dashboard-link span.patient-name').click();
+    const medicationStatus = await this.page.locator('#dashboard-treatments span.discontinued-text').first();
+    await expect(medicationStatus).toContainText('Stopped');
   }
 
   async saveOrder() {

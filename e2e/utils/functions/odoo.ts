@@ -8,7 +8,6 @@ export class Odoo {
   async open() {
     await this.page.goto(`${ODOO_URL}`);
     await this.page.getByPlaceholder('Email').fill(`${process.env.ODOO_USERNAME}`);
-    await this.page.getByPlaceholder('Password').click();
     await this.page.getByPlaceholder('Password').fill(`${process.env.ODOO_PASSWORD}`);
     await this.page.locator('button[type="submit"]').click();
   }
