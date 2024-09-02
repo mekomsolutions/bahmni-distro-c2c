@@ -20,7 +20,7 @@ test('Create and revise a diagnosis.', async ({ page }) => {
   await bahmni.registerPatient();
 
   // replay
-  await bahmni.goToDiagnosis();
+  await bahmni.navigateToDiagnosis();
   await page.locator('#name-0').fill('Candidiasis (B37.9)');
   await page.getByText('Candidiasis (B37.9)').click();
   await page.locator('#order-0').getByRole('button', { name: /primary/i }).click();

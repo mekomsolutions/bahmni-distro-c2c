@@ -128,7 +128,7 @@ test('Discontinuing a synced Bahmni lab order edits the corresponding Odoo quota
 
 test('Ordering a drug for a Bahmni patient creates the corresponding Odoo customer with a filled quotation.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
 
   // replay
   await bahmni.createMedication();
@@ -149,7 +149,7 @@ test('Ordering a drug for a Bahmni patient creates the corresponding Odoo custom
 
 test('Editing the details of a Bahmni patient with a synced drug order edits the corresponding Odoo customer details.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.createMedication();
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
@@ -170,7 +170,7 @@ test('Editing the details of a Bahmni patient with a synced drug order edits the
 
 test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotation line.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.createMedication();
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
@@ -185,7 +185,7 @@ test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotatio
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.editMedicationDetails();
 
   // verify
@@ -198,7 +198,7 @@ test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotatio
 
 test('Discontinuing a synced Bahmni drug order for an Odoo customer with a single quotation line removes the corresponding quotation.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.createMedication();
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
@@ -215,7 +215,7 @@ test('Discontinuing a synced Bahmni drug order for an Odoo customer with a singl
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.discontinueMedication();
 
   // verify

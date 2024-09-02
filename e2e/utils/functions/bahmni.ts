@@ -107,7 +107,7 @@ export class Bahmni {
     await expect(this.page).toHaveURL(/.*home/);
   }
 
-  async goToDiagnosis() {
+  async navigateToDiagnosis() {
     await this.page.locator('i.fa.fa-home').click();
     await this.page.getByRole('link', { name: 'Clinical' }).click();
     await this.searchPatient();
@@ -115,7 +115,7 @@ export class Bahmni {
     await this.page.locator('#opd-tabs').getByText('Diagnosis').click();
   }
 
-  async goToMedications() {
+  async navigateToMedications() {
     await this.page.getByRole('link', { name: 'Clinical' }).click();
     await this.searchPatient();
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
