@@ -7,6 +7,14 @@ export var patientName = {
   updatedGivenName: '',
 }
 
+export const delay = (mills) => {
+  let datetime1 = new Date().getTime();
+  let datetime2 = datetime1 + mills;
+  while(datetime1 < datetime2) {
+     datetime1 = new Date().getTime();
+    }
+}
+
 export class Bahmni {
   constructor(readonly page: Page) {}
 
@@ -48,10 +56,13 @@ export class Bahmni {
     await this.page.locator('#name').fill(`${patientName.familyName}`);
     await this.page.locator('form[name="searchByNameForm"]').getByRole('button', { name: 'Search' }).click();
     await this.page.locator('#view-content td:nth-child(1) a').click();
+    await expect(this.page.locator('#givenName')).toBeVisible();
     await this.page.locator('#givenName').clear();
+    await delay(1000);
     await this.page.locator('#givenName').fill(`${patientName.updatedGivenName}`);
     await this.page.getByRole('button', { name: 'Save' }).click();
     patientName.givenName = `${patientName.updatedGivenName}`;
+    await delay(3000);
   };
 
   async voidPatient() {
@@ -92,11 +103,19 @@ export class Bahmni {
   }
 
   async goToHomePage() {
-    await this.page.goto(`${BAHMNI_URL}/bahmni/home/`);
+    await this.page.goto(`${BAHMNI_URL}/bahmni/home`);
     await expect(this.page).toHaveURL(/.*home/);
   }
 
-  async goToMedications() {
+  async navigateToDiagnosis() {
+    await this.page.locator('i.fa.fa-home').click();
+    await this.page.getByRole('link', { name: 'Clinical' }).click();
+    await this.searchPatient();
+    await this.page.locator('#view-content :nth-child(1).btn--success').click();
+    await this.page.locator('#opd-tabs').getByText('Diagnosis').click();
+  }
+
+  async navigateToMedications() {
     await this.page.getByRole('link', { name: 'Clinical' }).click();
     await this.searchPatient();
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
@@ -146,5 +165,6 @@ export class Bahmni {
   async saveOrder() {
     await this.page.getByRole('button', { name: 'Save' }).click();
     await expect(this.page.getByText('Saved', {exact: true})).toBeVisible();
+    await delay(5000);
   }
 }

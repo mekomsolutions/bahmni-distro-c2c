@@ -31,14 +31,14 @@ test('Ordering a lab test for a Bahmni patient creates the corresponding Odoo cu
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
 
-  const statusSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(8) span");
-  await expect(statusSelector).toHaveText("Devis");
+  const statusSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span');
+  await expect(statusSelector).toHaveText('Devis');
 
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName}` }).click();
-  const labTest = await page.locator("tr:nth-child(1) td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier");
+  const labTest = await page.locator('tr:nth-child(1) td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier');
   await expect(labTest).toContainText('Malaria');
 });
 
@@ -50,10 +50,10 @@ test('Editing the details of a Bahmni patient with a synced lab order edits the 
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
-  const statusSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(8) span");
-  await expect(statusSelector).toHaveText("Devis");
+  const statusSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span');
+  await expect(statusSelector).toHaveText('Devis');
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
@@ -62,9 +62,9 @@ test('Editing the details of a Bahmni patient with a synced lab order edits the 
   // verify
   await page.goto(`${ODOO_URL}`);
   await odoo.searchCustomer();
-  const updatedCustomer = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const updatedCustomer = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(updatedCustomer).toHaveText(`${patientName.updatedGivenName}` + ' ' + `${patientName.familyName}`);
-  await expect(statusSelector).toHaveText("Devis");
+  await expect(statusSelector).toHaveText('Devis');
 });
 
 test('Revising a synced Bahmni lab order edits the corresponding Odoo quotation line.', async ({ page }) => {
@@ -74,12 +74,12 @@ test('Revising a synced Bahmni lab order edits the corresponding Odoo quotation 
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
-  const statusSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(8) span");
-  await expect(statusSelector).toHaveText("Devis");
+  const statusSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span');
+  await expect(statusSelector).toHaveText('Devis');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName}` }).click();
-  const labTest = await page.locator("td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span");
+  const labTest = await page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span');
   await expect(labTest).toHaveText('Malaria');
 
   // replay
@@ -91,7 +91,7 @@ test('Revising a synced Bahmni lab order edits the corresponding Odoo quotation 
   await page.goto(`${ODOO_URL}`);
   await odoo.searchCustomer();
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
-  await expect(statusSelector).toHaveText("Devis");
+  await expect(statusSelector).toHaveText('Devis');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).first().click();
   await expect(labTest).not.toContainText('Malaria');
   await expect(labTest).toHaveText('Hematocrite');
@@ -104,12 +104,12 @@ test('Discontinuing a synced Bahmni lab order edits the corresponding Odoo quota
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
-  const statusSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(8) span");
-  await expect(statusSelector).toHaveText("Devis");
+  const statusSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span');
+  await expect(statusSelector).toHaveText('Devis');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName}` }).click();
-  const labTest = await page.locator("td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span");
+  const labTest = await page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span');
   await expect(labTest).toHaveText('Malaria');
 
   // replay
@@ -121,14 +121,14 @@ test('Discontinuing a synced Bahmni lab order edits the corresponding Odoo quota
   await page.goto(`${ODOO_URL}`);
   await odoo.searchCustomer();
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
-  await expect(statusSelector).toHaveText("Annulé");
+  await expect(statusSelector).toHaveText('Annulé');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).first().click();
   await expect(page.getByText('Malaria')).not.toBeVisible();
 });
 
 test('Ordering a drug for a Bahmni patient creates the corresponding Odoo customer with a filled quotation.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
 
   // replay
   await bahmni.createMedication();
@@ -136,25 +136,25 @@ test('Ordering a drug for a Bahmni patient creates the corresponding Odoo custom
   // verify
   await odoo.open();
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
 
-  const statusSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(8) span");
-  await expect(statusSelector).toHaveText("Devis");
+  const statusSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span');
+  await expect(statusSelector).toHaveText('Devis');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName}` }).click();
-  const drugNameSelector = await page.locator("td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span");
+  const drugNameSelector = await page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span');
   await expect(drugNameSelector).toContainText('Aspirine Co 81mg');
 });
 
 
 test('Editing the details of a Bahmni patient with a synced drug order edits the corresponding Odoo customer details.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.createMedication();
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
 
   // replay
@@ -164,28 +164,28 @@ test('Editing the details of a Bahmni patient with a synced drug order edits the
   // verify
   await page.goto(`${ODOO_URL}`);
   await odoo.searchCustomer();
-  const updatedCustomer = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const updatedCustomer = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(updatedCustomer).toHaveText(`${patientName.updatedGivenName}` + ' ' + `${patientName.familyName}`);
 });
 
 test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotation line.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.createMedication();
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).click();
-  const medicationDescrptionSelector = await page.locator("td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span");
-  const drugNameSelector = await page.locator("td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span");
+  const medicationDescrptionSelector = await page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span');
+  const drugNameSelector = await page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span');
   await expect(drugNameSelector).toContainText('Aspirine Co 81mg');
   await expect(medicationDescrptionSelector).toContainText('Aspirine Co 81mg | 560.0 Ampoule(s) | 2.0 Application(s) - Q3H - 5 Semaine(s)');
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.editMedicationDetails();
 
   // verify
@@ -198,24 +198,24 @@ test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotatio
 
 test('Discontinuing a synced Bahmni drug order for an Odoo customer with a single quotation line removes the corresponding quotation.', async ({ page }) => {
   // setup
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.createMedication();
   await odoo.open();
   await expect(page).toHaveURL(/.*web/);
   await odoo.searchCustomer();
-  const customerSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(4)");
+  const customerSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)');
   await expect(customerSelector).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
-  const statusSelector = await page.locator("tr.o_data_row:nth-child(1) td:nth-child(8) span");
-  await expect(statusSelector).toHaveText("Devis");
+  const statusSelector = await page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span');
+  await expect(statusSelector).toHaveText('Devis');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).click();
-  const medicationDescrptionSelector = await page.locator("td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span");
-  const drugNameSelector = await page.locator("td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span");
+  const medicationDescrptionSelector = await page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span');
+  const drugNameSelector = await page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span');
   await expect(drugNameSelector).toContainText('Aspirine Co 81mg');
   await expect(medicationDescrptionSelector).toContainText('Aspirine Co 81mg | 560.0 Ampoule(s) | 2.0 Application(s) - Q3H - 5 Semaine(s)');
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.goToMedications();
+  await bahmni.navigateToMedications();
   await bahmni.discontinueMedication();
 
   // verify
