@@ -20,7 +20,6 @@ export class Bahmni {
 
   async login() {
     await this.page.goto(`${BAHMNI_URL}`)
-    await this.page.locator('#locale').selectOption('string:en');
     await this.page.locator('#username').fill(`${process.env.BAHMNI_USERNAME}`);
     await this.page.locator('#password').fill(`${process.env.BAHMNI_PASSWORD}`);
     await this.page.locator('#location').selectOption('object:7');
@@ -59,10 +58,10 @@ export class Bahmni {
     await expect(this.page.locator('#givenName')).toBeVisible();
     await this.page.locator('#givenName').clear();
     await delay(1000);
-    await this.page.locator('#givenName').fill(`${patientName.updatedGivenName}`);
+    await this.page.locator('#givenName').type(`${patientName.updatedGivenName}`);
     await this.page.getByRole('button', { name: 'Save' }).click();
     patientName.givenName = `${patientName.updatedGivenName}`;
-    await delay(3000);
+    await delay(8000);
   };
 
   async voidPatient() {
@@ -75,9 +74,13 @@ export class Bahmni {
     await expect(message?.includes('This patient has been deleted')).toBeTruthy();
   }
 
-  async goToLabSamples() {
+  async navigateToPatientDashboard() {
+    await this.page.goto(`${BAHMNI_URL}/bahmni/home`);
     await this.page.getByRole('link', { name: 'Clinical' }).click();
     await this.searchPatient();
+  }
+
+  async navigateToLabSamples() {
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
     await this.page.locator('#opd-tabs').getByText('Orders').click();
     await expect(this.page.getByText('Lab Samples')).toBeVisible();
@@ -100,24 +103,15 @@ export class Bahmni {
     await this.page.getByText('Blood', { exact: true }).click();
     await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
     await this.saveOrder();
-  }
-
-  async goToHomePage() {
-    await this.page.goto(`${BAHMNI_URL}/bahmni/home`);
-    await expect(this.page).toHaveURL(/.*home/);
+    await delay(4000);
   }
 
   async navigateToDiagnosis() {
-    await this.page.locator('i.fa.fa-home').click();
-    await this.page.getByRole('link', { name: 'Clinical' }).click();
-    await this.searchPatient();
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
     await this.page.locator('#opd-tabs').getByText('Diagnosis').click();
   }
 
   async navigateToMedications() {
-    await this.page.getByRole('link', { name: 'Clinical' }).click();
-    await this.searchPatient();
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
     await this.page.locator('#opd-tabs').getByText('Medications').click();
     await expect(this.page.getByText('Order Drug')).toBeVisible();
@@ -165,6 +159,6 @@ export class Bahmni {
   async saveOrder() {
     await this.page.getByRole('button', { name: 'Save' }).click();
     await expect(this.page.getByText('Saved', {exact: true})).toBeVisible();
-    await delay(5000);
+    await delay(8000);
   }
 }

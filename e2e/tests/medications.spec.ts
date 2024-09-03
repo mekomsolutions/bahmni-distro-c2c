@@ -19,7 +19,7 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await bahmni.registerPatient();
 
   // replay
-  await bahmni.goToHomePage();
+  await bahmni.navigateToPatientDashboard();
   await bahmni.navigateToMedications();
   await bahmni.createMedication();
 
