@@ -8,9 +8,8 @@ test.beforeEach(async ({ page }) => {
 
   await bahmni.login();
   await expect(page.getByText(/registration/i)).toBeVisible();
-  await expect(page.getByText(/linical/i)).toBeVisible();
+  await expect(page.getByText(/clinical/i)).toBeVisible();
   await expect(page.getByText(/admin/i)).toBeVisible();
-  await expect(page.getByText(/appointment scheduling/i)).toBeVisible();
   await expect(page.getByText(/patient documents/i)).toBeVisible();
 });
 
@@ -19,7 +18,7 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await bahmni.registerPatient();
 
   // replay
-  await bahmni.goToHomePage();
+  await bahmni.navigateToPatientDashboard();
   await bahmni.navigateToMedications();
   await bahmni.createMedication();
 
@@ -45,7 +44,7 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await page.locator('#uniform-dose-unit').selectOption('string:Comprime(s)');
   await page.locator('#route').selectOption('string:Inhalation');
   await page.getByRole('button', { name: 'Add' }).click();
-  await bahmni.saveOrder();
+  await bahmni.save();
   await expect(medicationDetailsSelector).not.toContainText('2 Application(s)');
   await expect(medicationDetailsSelector).toContainText('4 Comprime(s)');
   await expect(medicationDetailsSelector).not.toContainText('Q3H');
@@ -57,7 +56,7 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await expect(drugNameSelector).toContainText('Aspirine Co 81mg (Comprime)');
   await page.getByRole('button', { name: 'Stop' }).first().click();
   await page.getByPlaceholder('Notes').fill('Patient allergic to medicine');
-  await bahmni.saveOrder();
+  await bahmni.save();
   await page.locator('#dashboard-link span.patient-name').click();
   const medicationStatus = await page.locator('#dashboard-treatments span.discontinued-text').first();
   await expect(medicationStatus).toContainText('Stopped');

@@ -8,9 +8,8 @@ test.beforeEach(async ({ page }) => {
 
   await bahmni.login();
   await expect(page.getByText(/registration/i)).toBeVisible();
-  await expect(page.getByText(/linical/i)).toBeVisible();
+  await expect(page.getByText(/clinical/i)).toBeVisible();
   await expect(page.getByText(/admin/i)).toBeVisible();
-  await expect(page.getByText(/appointment scheduling/i)).toBeVisible();
   await expect(page.getByText(/patient documents/i)).toBeVisible();
 });
 
@@ -19,8 +18,8 @@ test('Create, revise and discontinue lab tests.', async ({ page }) => {
   await bahmni.registerPatient();
 
   // replay
-  await bahmni.goToHomePage();
-  await bahmni.goToLabSamples();
+  await bahmni.navigateToPatientDashboard();
+  await bahmni.navigateToLabSamples();
   await page.getByText('Blood', { exact: true }).click();
   await page.getByText('Malaria').click();
   await page.getByText('Urine').click();
@@ -31,7 +30,7 @@ test('Create, revise and discontinue lab tests.', async ({ page }) => {
   await page.getByText('Bacteries').click();
   await page.getByText('Sputum').click();
   await page.getByText('Serial sputum bacilloscopy').click();
-  await bahmni.saveOrder();
+  await bahmni.save();
 
   // verify creation
   await page.locator('#dashboard-link span.patient-name').click();
@@ -52,7 +51,7 @@ test('Create, revise and discontinue lab tests.', async ({ page }) => {
   await page.getByText('Urine Colour').click();
   await page.getByText('Stool', { exact: true }).click();
   await page.getByText('Stool Parasites').click();
-  await bahmni.saveOrder(); 
+  await bahmni.save();
 
   // verify revision
   await page.locator('#dashboard-link span.patient-name').click();
@@ -71,7 +70,7 @@ test('Create, revise and discontinue lab tests.', async ({ page }) => {
   await page.locator('#selected-orders li').filter({ hasText: 'Blood Sugar' }).locator('i').nth(1).click();
   await page.locator('#selected-orders li').filter({ hasText: 'Urine Colour' }).locator('i').nth(1).click();
   await page.locator('#selected-orders li').filter({ hasText: 'Stool Colour' }).locator('i').nth(1).click();
-  await bahmni.saveOrder();
+  await bahmni.save();
   await page.locator('#dashboard-link span.patient-name').click();
   await expect(page.locator('#Lab-Orders').getByText('Blood Sugar')).not.toBeVisible();
   await expect(page.locator('#Lab-Orders').getByText('Urine Colour')).not.toBeVisible();

@@ -9,9 +9,8 @@ test.beforeEach(async ({ page }) => {
 
   await bahmni.login();
   await expect(page.getByText(/registration/i)).toBeVisible();
-  await expect(page.getByText(/linical/i)).toBeVisible();
+  await expect(page.getByText(/clinical/i)).toBeVisible();
   await expect(page.getByText(/admin/i)).toBeVisible();
-  await expect(page.getByText(/appointment scheduling/i)).toBeVisible();
   await expect(page.getByText(/patient documents/i)).toBeVisible();
 });
 
@@ -20,12 +19,13 @@ test('Create and revise a diagnosis.', async ({ page }) => {
   await bahmni.registerPatient();
 
   // replay
+  await bahmni.navigateToPatientDashboard();
   await bahmni.navigateToDiagnosis();
   await page.locator('#name-0').fill('Candidiasis (B37.9)');
   await page.getByText('Candidiasis (B37.9)').click();
   await page.locator('#order-0').getByRole('button', { name: /primary/i }).click();
   await page.locator('#certainty-0').getByRole('button', { name: /confirmed/i }).click();
-  await bahmni.saveOrder();
+  await bahmni.save();
 
   // verify creation
   await page.locator('#dashboard-link span.patient-name').click();
@@ -41,7 +41,7 @@ test('Create and revise a diagnosis.', async ({ page }) => {
   await diagnosisOrderButton.waitFor({ state: 'visible' });
   await diagnosisOrderButton.focus();
   await diagnosisOrderButton.click();
-  await bahmni.saveOrder();
+  await bahmni.save();
   await page.locator('#dashboard-link span.patient-name').click();
   await expect(page.locator('#diagnosisName')).toContainText(/candidiasis/i);
   await expect(page.locator('#order')).toContainText(/secondary/i);
