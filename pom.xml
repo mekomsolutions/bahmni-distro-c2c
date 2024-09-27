@@ -70,7 +70,7 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.basedir}/configs/openmrs_config</directory>
+                  <directory>${project.basedir}/configs/openmrs</directory>
                 </resource>
               </resources>
             </configuration>
@@ -88,7 +88,7 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.basedir}/configs/bahmni_config</directory>
+                  <directory>${project.basedir}/configs/bahmni</directory>
                 </resource>
               </resources>
             </configuration>
@@ -106,7 +106,7 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.basedir}/configs/odoo_config</directory>
+                  <directory>${project.basedir}/configs/odoo</directory>
                 </resource>
               </resources>
             </configuration>
