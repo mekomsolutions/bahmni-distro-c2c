@@ -1,0 +1,3 @@
+id,name,categ_id/id,type,purchase_ok,invoice_policy
+init.a42c012f-f37c-4b35-b4bd-047c729162d4,Consultation prenatale,product.categ_services_others_orders,service,FALSE,Ordered quantities
+init.e0b6c54d-083e-48f5-890b-ac837a1fe81d,Consultation generale,product.categ_services_others_orders,service,FALSE,Ordered quantities

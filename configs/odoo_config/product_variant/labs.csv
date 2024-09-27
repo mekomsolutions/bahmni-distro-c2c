@@ -1,0 +1,9 @@
+id,name,categ_id/id,type,purchase_ok,sale_ok,invoice_policy
+init.707688af-bab8-41ae-8d4e-a64f83e9411a,H. Pylori (Selles),product.categ_services_lab_test_orders,service,FALSE,TRUE,Ordered quantities
+init.4c36027d-0b5f-4c10-9bc9-6b8bb4e65d11,Anti-strepyolysine O,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.ce0f626b-0cc3-463f-b703-e4b7c5e60f90,C Reactive Protein,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.916755e9-b121-4565-8e63-8c187a06a204,Human Chorionic Gonadotrophin,product.categ_services_lab_test_orders,service,FALSE,TRUE,Ordered quantities
+init.a9d907d9-92d2-4453-8dc5-d32bf7f25324,Anti-strepyolysine O (coded),product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.ee37c9bd-ee01-4292-b1ff-ac5ee62ebe80,C Reactive Protein (coded),product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.02bfdeaf-9327-4efe-8cd6-040d0326b0c2,Anti-strepyolysine O Test,product.categ_services_lab_test_orders,service,FALSE,TRUE,Ordered quantities
+init.86d9fb4a-84f7-4c0e-a74c-c3012742bb24,C Reactive Protein Test,product.categ_services_lab_test_orders,service,FALSE,TRUE,Ordered quantities

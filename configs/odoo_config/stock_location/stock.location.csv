@@ -1,0 +1,3 @@
+"id","name",active
+"init.stock_location_pharmacy","Pharmacy Stock",False
+"init.stock_location_emergency","Emergency Stock",False

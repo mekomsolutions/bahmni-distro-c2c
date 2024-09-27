@@ -1,0 +1,3 @@
+"id","name","rounding","rounding_method","profit_account_id/id",loss_account_id/id,"strategy"
+"init.account_cash_rounding_1","Rounding UP","5.0","UP","l10n_generic_coa.1_cash_diff_income",l10n_generic_coa.1_cash_diff_expense,"Add a rounding line"
+"init.account_cash_rounding_2","Rounding DOWN","5.0","DOWN","l10n_generic_coa.1_cash_diff_income",l10n_generic_coa.1_cash_diff_expense,"Add a rounding line"

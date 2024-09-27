@@ -1,0 +1,22 @@
+{
+    "MODULE_LABEL_ALL_PATIENTS_KEY": "Tous les patients",
+    "MODULE_LABEL_ACTIVE_PATIENTS_KEY":"Patients actifs",
+  
+    "SEARCH_NAME_PLACEHOLDER_KEY": "Rechercher Nom/ID  ...",
+    "SEARCH_KEY": "Rechercher",
+    "YEARS_LABEL": "ans",
+    "FILE_UPLOAD_SUCCESS_MESSAGE": "Fichier(s) mis à jour.",
+    "PLEASE_ROTATE_DEVICE_MESSAGE": "Veuillez tourner l'appareil",
+    "NEW_VISIT_LABEL": "Nouvelle visite",
+    "VISIT_EXIST_LABEL": "Une visite est déjà créé pour la période spécifiée. veuillez attacher votre fichier à cette visite ou modifier les dates de la nouvelle visite",
+    "VISIT_NOT_IN_FUTURE_LABEL": "la date de debut de visite ne peut etre future",
+    "START_NOT_GREATER_THAN_END_DATE_LABEL": "la date de début de visite ne peut etre posterieure à la date de fin.",
+    "VISIT_TYPE_LABEL": "Type de visite",
+    "START_DATE_LABEL": "Date de début",
+    "END_DATE_LABEL": "Date de fin",
+    "SCAN_LABEL": "SCAN",
+    "SAVE_LABEL": "ENREGISTRER",
+    "VISIT_LABEL": "Visite",
+    "VISIT_FROM_LABEL": "Du:",
+    "VISIT_TO_LABEL": "à:"
+}

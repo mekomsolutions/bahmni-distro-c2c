@@ -1,0 +1,2 @@
+"id","name","field_description","model_id","ttype","index","store","readonly","relation","size","related"
+"init.6cd59142-1af4-4bf6-9ab8-3c05f26819ce","x_external_identifier","Customer External ID","Journal Entry","char","True","True","True","","38","partner_id.x_external_identifier"

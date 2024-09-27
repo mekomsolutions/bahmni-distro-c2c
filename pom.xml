@@ -23,101 +23,22 @@
   </parent>
 
   <properties>
-
     <!-- Configs -->
     <child.openmrsconfigVersion>1.7.0-SNAPSHOT</child.openmrsconfigVersion>
     <child.bahmniconfigVersion>1.4.0-SNAPSHOT</child.bahmniconfigVersion>
     <child.odooconfigVersion>1.7.0-SNAPSHOT</child.odooconfigVersion>
-
+    <distro.baseDir>${project.build.directory}/${project.artifactId}-${project.version}</distro.baseDir>
+    <distro.openmrsconfigDir>${distro.baseDir}/openmrs_config</distro.openmrsconfigDir>
+    <distro.bahmniconfigDir>${distro.baseDir}/bahmni_config</distro.bahmniconfigDir>
+    <distro.odooconfigDir>${distro.baseDir}/odoo_config</distro.odooconfigDir>
   </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>net.mekomsolutions</groupId>
-      <artifactId>openmrs-config-c2c</artifactId>
-      <type>zip</type>
-      <version>${child.openmrsconfigVersion}</version>
-    </dependency>
-    <dependency>
-      <groupId>net.mekomsolutions</groupId>
-      <artifactId>bahmni-config-c2c</artifactId>
-      <type>zip</type>
-      <version>${child.bahmniconfigVersion}</version>
-    </dependency>
-    <dependency>
-      <groupId>net.mekomsolutions</groupId>
-      <artifactId>odoo-config-c2c</artifactId>
-      <type>zip</type>
-      <version>${child.odooconfigVersion}</version>
-    </dependency>
-  </dependencies>
 
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.8</version>
-        <!-- OpenMRS child config -->
-        <executions>
-          <execution>
-            <id>unpack-openmrs-config-c2c</id>
-            <phase>package</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <excludeTransitive>true</excludeTransitive>
-              <useBaseVersion>true</useBaseVersion>
-              <outputDirectory>${distro.openmrsconfigDir}</outputDirectory>
-              <includeArtifactIds>openmrs-config-c2c</includeArtifactIds>
-            </configuration>
-          </execution>
-          <!-- Bahmni child config -->
-          <execution>
-            <id>unpack-bahmni-config-c2c</id>
-            <phase>package</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <excludeTransitive>true</excludeTransitive>
-              <useBaseVersion>true</useBaseVersion>
-              <outputDirectory>${distro.bahmniconfigDir}</outputDirectory>
-              <includeArtifactIds>bahmni-config-c2c</includeArtifactIds>
-            </configuration>
-          </execution>
-          <!-- Odoo child config -->
-          <execution>
-            <id>unpack-odoo-config-c2c</id>
-            <phase>package</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <excludeTransitive>true</excludeTransitive>
-              <useBaseVersion>true</useBaseVersion>
-              <outputDirectory>${distro.odooconfigDir}</outputDirectory>
-              <includeArtifactIds>odoo-config-c2c</includeArtifactIds>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.2.0</version>
-        <configuration>
-          <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
-          <resources>
-            <resource>
-              <directory>${project.basedir}</directory>
-              <includes>
-                <include>k8s-services.yml</include>
-              </includes>
-            </resource>
-          </resources>
-        </configuration>
         <executions>
           <execution>
             <id>copy-resources</id>
@@ -125,6 +46,70 @@
             <goals>
               <goal>copy-resources</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}</directory>
+                  <includes>
+                    <include>k8s-services.yml</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- Copy openmrs configs -->
+            <id>Copy local openmrs config resources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${distro.openmrsconfigDir}</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/configs/openmrs_config</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <!-- Copy bahmni configs -->
+            <id>Copy local bahmni config resources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${distro.bahmniconfigDir}</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/configs/bahmni_config</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+
+          <execution>
+            <!-- Copy odoo configs -->
+            <id>Copy local odoo config resources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${distro.odooconfigDir}</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/configs/odoo_config</directory>
+                </resource>
+              </resources>
+            </configuration>
           </execution>
         </executions>
       </plugin>

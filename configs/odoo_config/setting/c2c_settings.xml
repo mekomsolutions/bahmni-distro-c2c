@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="c2c_config_settings" model="res.config.settings">
+        <field name="group_cash_rounding" eval="True"/>
+    </record>
+    <function model="res.config.settings" name="execute">
+        <value model="res.config.settings"
+               search="[('id', '=', ref('c2c_config_settings'))]"/>
+    </function>
+</odoo>

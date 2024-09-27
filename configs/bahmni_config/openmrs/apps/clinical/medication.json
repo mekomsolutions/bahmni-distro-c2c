@@ -1,0 +1,177 @@
+{
+  "commonConfig": {},
+  "tabConfig": {
+    "allMedicationTabConfig": {
+      "inputOptionsConfig": {
+        "allowOnlyCodedDrugs":true,
+        "defaultDurationUnit": "Jour(s)",
+        "hideOrderSet": false,
+        "defaultInstructions": "As directed",
+        "labels": {
+          "asNeeded": "MEDICATION_AS_NEEDED",
+          "asNeededButton": "MEDICATION_AS_NEEDED_BUTTON_PLACEHOLDER",
+          "asNeededButtonAccessKey": "MEDICATION_AS_NEEDED_ACCESS_KEY"
+        },
+        "routesToMakeDoseSectionNonMandatory": [
+          "Oral",
+          "Topique",
+          "Inhalation",
+          "Intramusculaire",
+          "Intraveineuse",
+          "Ophtalmique",
+          "Otique",
+          "Sous-cutanee",
+          "Rectal",
+          "Intravaginale",
+          "Voir Commentaires"
+        ],
+        "frequencies": [
+          "Q1H",
+          "Q2H",
+          "Q3H",
+          "Q4H",
+          "Q5H",
+          "5 fois/jour",
+          "Q6H",
+          "Q8H",
+          "Q12H",
+          "Quotidien",
+          "Chaque nuit",
+          "Q48H",
+          "Hebdomadaire",
+          "2 fois/semaine",
+          "3 fois/semaine",
+          "1 fois toutes les 2 semaines",
+          "1 fois toutes les 3 semaines",
+          "Mensuellement",
+          "Voir Commentaires"
+        ],
+        "durationUnitsFactors" : [
+          {"name": "Jour(s)", "factor": 1},
+          {"name": "Semaine(s)", "factor": 7},
+          {"name": "Mois", "factor": 30}
+      ],
+        "frequencyDefaultDurationUnitsMap": [
+          {
+            "minFrequency": 5,
+            "maxFrequency": null,
+            "defaultDurationUnit": "Jour(s)"
+          },
+          {
+            "minFrequency": "1/7",
+            "maxFrequency": 5,
+            "defaultDurationUnit": "Jour(s)"
+          },
+          {
+            "minFrequency": "1/30",
+            "maxFrequency": "1/7",
+            "defaultDurationUnit": "Semaine(s)"
+          },
+          {
+            "minFrequency": null,
+            "maxFrequency": "1/30",
+            "defaultDurationUnit": "Mois"
+          }
+        ],
+        "drugFormDefaults": {
+          "Ayurvedic": {
+            "doseUnits": "Cuillere(s) a cafe",
+            "route": "Oral"
+          },
+          "Gelule": {
+            "doseUnits": "Gelule(s)",
+            "route": "Oral"
+          },
+          "Creme": {
+            "doseUnits": "Application(s)",
+            "route": "Topique"
+          },
+          "Gouttes": {
+            "doseUnits": "Goutte(s)",
+            "route": "Ophtalmique"
+          },
+          "Food Supplement": {
+            "doseUnits": "Unite(s)",
+            "route": "Oral"
+          },
+          "Sublingual": {
+            "doseUnits": "Comprime(s)",
+            "route": "Oral"
+          },
+          "Inhalable": {
+            "doseUnits": "Bouffee(s)",
+            "route": "Inhalation"
+          },
+          "Injectable": {
+            "doseUnits": "mg",
+            "route": "Intraveineuse"
+          },
+          "Lotion": {
+            "doseUnits": "Application(s)",
+            "route": "Topique"
+          },
+          "Poudre": {
+            "doseUnits": "mg",
+            "route": "Topique"
+          },
+          "Solution": {
+            "doseUnits": "ml",
+            "route": "Intraveineuse"
+          },
+          "Vaporisateur": {
+            "doseUnits": "Bouffee(s)",
+            "route": "Inhalation"
+          },
+          "Sirop/Suspuension": {
+            "doseUnits": "ml",
+            "route": "Oral"
+          },
+          "Sirop": {
+            "doseUnits": "ml",
+            "route": "Oral"
+          },
+          "Comprime": {
+            "doseUnits": "Comprime(s)",
+            "route": "Oral"
+          },
+          "Unit": {
+            "doseUnits": "Unite(s)",
+            "route": "See comments"
+          },
+          "Solution orale": {
+            "doseUnits": "ml",
+            "route": "Oral"
+          },
+          "Suspension Buvable Gel": {
+            "doseUnits": "ml",
+            "route": "Oral"
+          },
+          "Huile": {
+            "doseUnits": "Application(s)",
+            "route": "Topique"
+          },
+          "Ovule(s)": {
+            "doseUnits": "Ovule(s)",
+            "route": "Intravaginale"
+          },
+          "Pommade": {
+            "doseUnits": "Application(s)",
+            "route": "Topique"
+          },
+          "Pate": {
+            "doseUnits": "Paquet(s)",
+            "route": "Oral"
+          },
+          "Suppositoire": {
+            "doseUnits": "Unite(s)",
+            "route": "Rectal"
+          },
+          "Granules": {
+            "doseUnits": "Sachet(s)",
+            "route": "Oral"
+          }
+        }
+      }
+    }
+  }
+}

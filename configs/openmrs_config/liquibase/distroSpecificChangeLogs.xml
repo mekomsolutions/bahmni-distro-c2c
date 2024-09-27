@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+                  
+    <changeSet id="202402271000" author="Kazooba,Lawrence">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="1">select count(*) from scheduler_task_config where schedulable_class= "org.openmrs.module.emrapi.adt.CloseStaleVisitsTask" and name = "Close Stale Visits Task";</sqlCheck>
+        </preConditions>
+        <comment>Set "Close Stale Visits Task" scheduler task to run every hour</comment>
+        <update tableName="scheduler_task_config">
+            <column name="repeat_interval" value="3600"/>
+            <where>schedulable_class = "org.openmrs.module.emrapi.adt.CloseStaleVisitsTask" and name = "Close Stale Visits Task"</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>
