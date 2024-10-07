@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "devDependencies": {
-    "@playwright/test": "^1.45.6",
+    "@playwright/test": "^1.47.2",
     "@types/node": "^22.2.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
