@@ -70,7 +70,7 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.basedir}/configs/openmrs</directory>
+                  <directory>${project.basedir}/configs/openmrs/initializer</directory>
                 </resource>
               </resources>
             </configuration>
@@ -106,7 +106,7 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.basedir}/configs/odoo</directory>
+                  <directory>${project.basedir}/configs/odoo/initializer</directory>
                 </resource>
               </resources>
             </configuration>
