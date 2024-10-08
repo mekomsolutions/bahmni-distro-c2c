@@ -1,0 +1,140 @@
+{
+  "jobs": [{
+      "name": "Visits",
+      "type": "customSql",
+      "readerSql": "SELECT visit.visit_id AS visit_id, visit.patient_id AS patient_id, visit_type.uuid AS visit_type_uuid, visit_type.name as visit_type, visit.date_started AS date_started, visit.date_stopped AS date_stopped, visit.indication_concept_id AS indication_concept_id, visit.location_id AS location_id, visit.voided AS visit_voided, visit.uuid AS visit_uuid, person.person_id AS person_id, row_number() over(partition by visit.patient_id) as number_occurences, person.gender AS gender, person.birthdate AS birthdate, person.birthdate_estimated AS birthdate_estimated, CASE WHEN datediff(visit.date_started, person.birthdate)/365 < 1 THEN '0 - 1' WHEN datediff(visit.date_started, person.birthdate)/365 BETWEEN 1 AND 4 THEN '1 - 4' WHEN datediff(visit.date_started, person.birthdate)/365 BETWEEN 4 AND 9 THEN '5 - 9' WHEN datediff(visit.date_started, person.birthdate)/365 BETWEEN 10 AND 14 THEN '10 - 14' WHEN datediff(visit.date_started, person.birthdate)/365 BETWEEN 15 AND 19 THEN '15 - 19' WHEN datediff(visit.date_started, person.birthdate)/365 BETWEEN 20 AND 24 THEN '20 - 24' WHEN datediff(visit.date_started, person.birthdate)/365 > 24 THEN '25+' ELSE 'Invalid birthdate' END AS 'age_at_visit_group_profile_1', datediff(visit.date_started, person.birthdate)/365 as age_at_visit, person.dead AS dead, person.death_date AS death_date, person.cause_of_death AS cause_of_death, person.voided AS person_voided, person.uuid AS person_uuid FROM visit LEFT JOIN visit_type visit_type ON visit.visit_type_id = visit_type.visit_type_id LEFT JOIN person person ON visit.patient_id = person.person_id",
+      "tableName": "visits",
+      "incrementalUpdateConfig": {
+        "updateOn": "visit_id",
+        "eventCategory": "visit",
+        "openmrsTableName": "visit"
+      }
+    },
+    {
+      "name": "Concepts",
+      "type": "customSql",
+      "readerSql": "SELECT `concept`.`concept_id` AS `concept_id`, `concept_reference_source`.`name` AS `Concept Mapping Source`, `concept_reference_term`.`code` AS `Concept Mapping Code`, `concept_reference_term`.`name` AS `Concept Mapping Name`, `concept_name`.`name` AS `name`, `concept_name`.`locale` AS `locale`, `concept_name`.`locale_preferred` AS `locale_preferred`, `concept`.`retired` AS `retired`, `concept`.`uuid` AS `uuid` FROM `concept` LEFT JOIN `concept_reference_map` `concept_reference_map` ON `concept`.`concept_id` = `concept_reference_map`.`concept_id` LEFT JOIN `concept_reference_term` `concept_reference_term` ON `concept_reference_map`.`concept_reference_term_id` = `concept_reference_term`.`concept_reference_term_id` LEFT JOIN `concept_reference_source` `concept_reference_source` ON `concept_reference_term`.`concept_source_id` = `concept_reference_source`.`concept_source_id` LEFT JOIN `concept_name` `concept_name` ON `concept`.`concept_id` = `concept_name`.`concept_id`",
+      "tableName": "concepts",
+      "incrementalUpdateConfig": {
+        "updateOn": "concept_id",
+        "eventCategory": "concept",
+        "openmrsTableName": "concept"
+      }
+    },
+    {
+      "name": "base_obs_query",
+      "type": "customSql",
+      "readerSql": "SELECT `obs`.`obs_id` AS `obs_id`, `obs`.`person_id` AS `person_id`, `concept_concept_name`.`name` AS `concept_name`,`obs`.`concept_id` AS `concept_id`, `obs`.`obs_group_id` AS `obs_group_id`, `obs`.`accession_number` AS `accession_number`, `obs`.`form_namespace_and_path` AS `form_namespace_and_path`, `obs`.`value_coded` AS `value_coded`, `value_concept_name`.`name` AS `value_coded_name`, `obs`.`value_coded_name_id` AS `value_coded_name_id`, `obs`.`value_drug` AS `value_drug`, `obs`.`value_datetime` AS `value_datetime`, `obs`.`value_numeric` AS `value_numeric`, `obs`.`value_modifier` AS `value_modifier`, `obs`.`value_text` AS `value_text`, `obs`.`value_complex` AS `value_complex`, `obs`.`comments` AS `comments`, `obs`.`creator` AS `creator`, `obs`.`date_created` AS `date_created`, `obs`.`voided` AS `obs_voided`, `obs`.`void_reason` AS `obs_void_reason`, `obs`.`previous_version` AS `previous_version`, `encounter`.`encounter_id` AS `encounter_id`, `encounter`.`voided` AS `voided_2`, `visit`.`visit_id` AS `visit_id`, `visit`.`date_started` AS `visit_date_started`, `visit`.`date_stopped` AS `visit_date_stopped`, `visit`.`location_id` AS `location_id`, `encounter_type`.`name` AS `encounter_type_name`, `encounter_type`.`description` AS `encounter_type_description`, `encounter_type`.`retired` AS `encounter_type_retired`, `encounter_type`.`uuid` AS `encounter_type_uuid`, `visit_type`.`name` AS `visit_type_name`, `visit_type`.`retired` AS `visit_type_retired`, `visit_type`.`uuid` AS `visit_type_uuid`, `location`.`name` AS `location_name`, `location`.`address1` AS `location_address1`, `location`.`address2` AS `location_address2`, `location`.`city_village` AS `location_city_village`, `location`.`state_province` AS `location_state_province`, `location`.`postal_code` AS `location_postal_code`, `location`.`country` AS `location_country`, `location`.`retired` AS `location_retired`, `location`.`uuid` AS `location_uuid` FROM `obs`  LEFT JOIN `concept_name` `value_concept_name` ON `obs`.`value_coded` = `value_concept_name`.`concept_id` AND `obs`.`value_coded` IS NOT NULL LEFT JOIN `encounter` `encounter` ON `obs`.`encounter_id` = `encounter`.`encounter_id` LEFT JOIN `visit` `visit` ON `encounter`.`visit_id` = `visit`.`visit_id` LEFT JOIN `encounter_type` `encounter_type` ON `encounter`.`encounter_type` = `encounter_type`.`encounter_type_id` LEFT JOIN `visit_type` `visit_type` ON `visit`.`visit_type_id` = `visit_type`.`visit_type_id` LEFT JOIN `location` `location` ON `obs`.`location_id` = `location`.`location_id` LEFT JOIN `concept_name` `concept_concept_name` ON `obs`.`concept_id` = `concept_concept_name`.`concept_id` WHERE  `concept_concept_name`.`locale` = 'fr' AND `concept_concept_name`.`locale_preferred` = 'true' AND ( `value_concept_name`.`locale` IS NULL OR `value_concept_name`.`locale` = 'fr') AND (`value_concept_name`.`locale_preferred` IS NULL OR `value_concept_name`.`locale_preferred` = 'true' ) ",
+      "tableName": "base_obs_query"
+    },
+    {
+      "name": "Patients",
+      "type": "patients",
+      "chunkSizeToRead": "500"
+    },
+    {
+      "name": "Appointments",
+      "type": "appointments",
+      "chunkSizeToRead": "500",
+      "groupedJobConfigs": [{
+        "tableName": "appointment_service_default",
+        "columnsToIgnore": []
+      }]
+    },
+    {
+      "name": "Location",
+      "type": "location",
+      "chunkSizeToRead": "500"
+    },
+    {
+      "name": "Person",
+      "type": "person",
+      "chunkSizeToRead": "500",
+      "groupedJobConfigs": [{
+          "tableName": "person_attributes",
+          "columnsToIgnore": [
+            "primaryContact",
+            "secondaryContact",
+            "primaryRelative",
+            "familyNameLocal",
+            "givenNameLocal",
+            "middleNameLocal"
+          ]
+        },
+        {
+          "tableName": "person_details_default",
+          "columnsToIgnore": [
+            "prefix",
+            "given_name",
+            "middle_name",
+            "family_name_prefix",
+            "family_name",
+            "family_name2",
+            "family_name_suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Visits And Encounters",
+      "type": "visitsAndEncounters",
+      "chunkSizeToRead": "500"
+    },
+    {
+      "name": "Medication And Orders",
+      "type": "medicationAndOrders",
+      "chunkSizeToRead": "500",
+      "groupedJobConfigs": [{
+        "tableName": "medication_data_default",
+        "columnsToIgnore": [
+          "instructions",
+          "stop_notes"
+        ]
+      }]
+    },
+    {
+      "name": "Diagnoses And Conditions",
+      "type": "diagnosesAndConditions",
+      "chunkSizeToRead": "500"
+    },
+    {
+      "name": "MetaData Dictionary",
+      "type": "metadata",
+      "conceptReferenceSource": ""
+    }
+  ],
+  "procedures": [{
+      "name": "Discharge Date Procedure",
+      "sourceFilePath": "classpath:procedureSql/dischargeDateProc.sql"
+    },
+    {
+      "name": "Age Group Procedure",
+      "sourceFilePath": "classpath:procedureSql/ageGroupProc.sql"
+    }
+  ],
+  "views": [{
+      "name": "patient_visits_encounters_view",
+      "sourceFilePath": "classpath:viewSql/patientVisitsEncountersView.sql"
+    },
+    {
+      "name": "appointment_admin_panel_view",
+      "sql": "SELECT * FROM appointment_service_default LEFT OUTER JOIN service_availability_default USING (appointment_service_id, service_name)"
+    },
+    {
+      "name": "patient_details_view",
+      "sourceFilePath": "classpath:viewSql/patientDetailsView.sql"
+    },
+    {
+      "name": "patient_information_view",
+      "sourceFilePath": "classpath:viewSql/patientInformationView.sql"
+    },
+    {
+      "name": "patient_appointment_view",
+      "sourceFilePath": "classpath:viewSql/patientAppointmentView.sql"
+    },
+    {
+      "name": "patient_diagnosis_condition_view",
+      "sourceFilePath": "classpath:viewSql/patientDiagnosisConditionView.sql"
+    }
+  ]
+}

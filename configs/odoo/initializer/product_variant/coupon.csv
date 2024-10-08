@@ -1,0 +1,5 @@
+id,name,categ_id/id,type,purchase_ok,invoice_policy
+init.22134922-63af-4790-937a-bb191d399792,Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.4b310fe5-ddc1-42a9-bf25-7c934a540fee,H2 MHP,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.391efe80-9851-4e9b-8811-d4af3d5a4ff4,H3 MHP,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.2e916ab7-486d-42be-a86a-8b642334d1eb,H6 MHP,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities

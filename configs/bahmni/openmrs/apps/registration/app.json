@@ -1,0 +1,87 @@
+{
+    "id": "bahmni.registration",
+    "instanceOf": "bahmni.template.registration",
+    "description": "Bahmni Patient Registration App",
+    "extensionPoints": [
+        {
+            "id": "org.bahmni.registration.patient.search.result.action",
+            "description": "Bahmni Patient Search Result Action"
+        },
+        {
+            "id": "org.bahmni.registration.patient.next",
+            "description": "After Bahmni Patient Registration, forward url configuration"
+        }
+    ],
+    "contextModel": [
+        "patientUuid",
+        "activeVisitUuid"
+    ],
+    "config": {
+        "patientInformation": {
+            "additionalPatientInformation": {
+                "title": "Additional Patient Information",
+                "attributes": [
+                    "impl.maritalStatus-freeText",
+                    "impl.contactPersonType",
+                    "impl.employment-freeText"
+                ]
+            },
+            "hidden": {
+                "attributes": []
+            },
+            "defaults": {}
+        },
+        "addressHierarchy": {
+            "showAddressFieldsTopDown": true
+        },
+        "autoCompleteFields": [
+            "familyName"
+        ],
+        "defaultVisitType": "Général",
+        "searchByIdForwardUrl": "/patient/{{patientUuid}}",
+        "showLastName": true,
+        "showBirthTime": false,
+        "fieldValidation": {
+            "email": {
+                "pattern": "[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+                "errorMessage": "Should be an email address​​​"
+            }
+        },
+        "patientSearch": {
+            "address": {
+                "label": "Commune",
+                "placeholder": "SEARCH_COMMUNE_PLACEHOLDER",
+                "field": "city_village"
+            },
+            "customAttributes": {
+                "label": "ATTRIBUTE_SEARCH",
+                "placeholder": "SEARCH_PHONE_NUMBER_PLACEHOLDER",
+                "fields": [
+                    "phoneNumber",
+                    "2ndPhoneNumber"
+                ]
+            }
+        },
+        "patientSearchResults": {
+            "address": {
+                "fields": [
+                    "city_village"
+                ]
+            },
+            "personAttributes": {
+                "fields": [
+                    "phoneNumber",
+                    "2ndPhoneNumber"
+                ]
+            }
+        },
+        "printOptions": [
+            {
+                "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
+                "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print.html",
+                "shortcutKey": "p"
+            }
+        ],
+        "afterVisitSaveForwardUrl": "./index.html#/search"
+    }
+}

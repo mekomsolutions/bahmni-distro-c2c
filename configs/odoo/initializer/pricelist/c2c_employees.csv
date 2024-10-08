@@ -1,0 +1,2 @@
+id,name,discount_policy,sequence,currency_id/id
+init.product_pricelist_c2c_employees,C2C Employees,Discount included in the price,16,base.HTG

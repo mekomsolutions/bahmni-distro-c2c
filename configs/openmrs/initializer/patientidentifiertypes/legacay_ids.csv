@@ -1,0 +1,3 @@
+Uuid,Void/Retire,Name,Description,Required,Format,Format description,Validator,Location behavior,Uniqueness behavior,_order:1000
+bea235f3-a2c3-4856-8a03-008f0be11a4b,,VECNA ID,Vecna ID legacy identifier,FALSE,,,,NOT_USED,NON_UNIQUE,
+ea2ae452-4c30-11ea-a97c-a38682ba76bc,,VECNA GUID,Vecna GUID legacy identifier,FALSE,,,,NOT_USED,NON_UNIQUE,

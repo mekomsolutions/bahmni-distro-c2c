@@ -1,0 +1,30 @@
+{
+    "general":{
+        "translationKey": "DASHBOARD_TAB_GENERAL_KEY",
+        "displayByDefault": true,
+        "printing": {
+            "title": "C2C",
+            "header": "Visite",
+            "logo": "/bahmni_config/openmrs/apps/home/C2C_logo.png"
+        },
+        "defaultSections": true,
+        "sections": {
+            "pivotTable":{
+                "type": "pivotTable",
+                "displayOrder": 0,
+                "title": "Vitals Flowsheet",
+                "config": {
+                    "groupBy": "encounters",
+                    "obsConcepts": [
+                        "Groupe tension artérielle",
+                        "Température",
+                        "Pouls",
+                        "Frequence respiratoire",
+                        "Saturation d'oxygène",
+                        "Périmètre bracchial" 
+                    ]
+                }
+            }
+        }
+    }
+}

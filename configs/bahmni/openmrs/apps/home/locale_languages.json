@@ -1,0 +1,12 @@
+{
+  "locales": [
+    {
+      "code": "fr",
+      "nativeName": "Français"
+    },
+    {
+      "code": "en",
+      "nativeName": "English"
+    }
+  ]
+}

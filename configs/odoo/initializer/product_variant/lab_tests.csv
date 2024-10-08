@@ -1,0 +1,79 @@
+id,name,categ_id/id,type,purchase_ok,invoice_policy
+init.91d1dba5-bd31-4f0f-857a-1fae38165a6d,Glycemie,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.00ce9624-11e3-4015-b695-d7ff7cb3930e,Groupe sanguin,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.508c9da4-56f9-4129-9a0e-766fb8e74f3e,Malaria,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.7036964e-e177-465e-8af8-b1b761f290c5,Vitesse de sedimentation,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.a60b7de5-d126-4b28-8efc-2a81de5165f0,Widal,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.92f1d76a-4091-4b99-83d4-633b5fbd096e,H. Pylori (Sang),product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.382c9fa6-81d8-48c7-8b45-7866f5473030,Sickling Test,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.3fb9fc5a-3a35-4298-9a92-c24853adf4f9,Hematocrite,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.0758ec9f-efd5-4421-a6ee-41aa397f05a9,Taux de leucocytes,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.3cf0a904-b1ad-4c35-b2d3-20634e2c4820,Taux d’hematies,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.becd4484-4379-4069-8448-d7211f3654c4,Hemoglobine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.26ffad22-33ed-433f-8430-99fcafcb4baa,Neutrophiles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.f8bd08fd-0243-4ca6-8257-c0ecbddde480,Eosinophiles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.1a951978-61d9-4ef6-9481-d2456f3b4b0c,Basophiles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.86cea01d-37ef-4275-9f28-05997a759c02,Lymphocites,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.4fb44f2b-cb12-488d-b8de-3f4a7917e45f,Monocytes,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.3b878b87-844e-47de-97b5-50d9fbb3f4d3,Reticulocytes,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.5c64ff49-2821-476c-af50-8dab7275eeed,Volume corpusculaire moyen,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.137e9ba3-85ad-4fe3-bcbc-f05bc4613d34,Concentration moyenne d'hemoglobine corpusculaire,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.ec4c96b4-1da4-41b6-978b-4d71d2821153,Hemoglobine corpusculaire moyenne,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.28241008-8e07-47ec-8692-3c276e6fae4a,Plaquettes,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.e1a77dc7-c7d6-41d2-9c4e-93acc1093bcf,Hemogramme complet,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.571e8f4f-4d98-40eb-bd55-c88b8a8ab76d,Gravindex,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.7f2b179f-aaab-43cf-8f37-7eb9563db85d,Couleur de l'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.862c9e83-c66a-4e38-a5fd-57f7ef757d7e,Apparence de l'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.6cc30635-0487-45f5-9214-d9c49fcd0372,Densite ,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.16d344a9-c47c-4aa6-bb6a-9bfcce69f420,pH,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.d04d3d38-a009-4e7f-a8a0-49e4be99cfbd,Sang dans l'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.1eda2b4c-16e1-4276-9439-116ea7d5ce58,Nitrites,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.8b1d6a06-a2a8-48ff-aba0-9b06735de0c4,Glucose,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.38c84115-c528-4472-8bdd-fec228468877,Acetone Cetone,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.946359c0-9855-4d4a-ac42-a22ff3172eed,Urine Albumine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.84976d7c-8bb4-4584-a812-e00e99cf2e4c,Acide ascorbique,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.61c0f1d9-6440-4a22-9c55-b10603245254,Bilirubine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.bb655797-22dc-4d21-9806-88fbc62cd601,Urobilinogene,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.a360c76e-b365-4854-97f9-1703ec29cb48,Urine Proteines,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.e3ae7371-8a91-413e-8f99-93bc8f45a07a,Globules blancs urinaires,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.eceed5e9-c513-4ff0-b8a2-900f53599c41,Prelevement de globules blancs,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.668b296c-a1fc-4d2f-bfad-1997704a4762,Globules rouges urinaires,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.d4708141-0562-49c4-aabe-b03a2dbf7c2b,Prelevement de globules rouges,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.168f4adf-4beb-49d2-8070-b2776ccd2b23,Bacteries urinaires,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.02a4cfd9-196c-4ce7-90a8-c67f52c8fa7e,Prelevement de bacteries,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.1d832608-72a0-4e18-af6c-5d3bc2c18caf,Cellules epitheliales d'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.b81d6efb-79d3-4c75-802f-b37e266eea10,Prelevement de cellules epitheliales,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.0c6000c4-25db-4cf3-b25f-2664f601ef23,Levures bourgeonnantes d'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.71e57af5-82de-48f1-9707-e4fab8cec9c9,Prelevement de levures bourgeonnantes,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.8ac2c2c6-5333-43ac-b2ee-25077160b443,Levures simples d'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.ecada6af-564c-428f-ada6-c356e9efd8e5,Prelevement de levures simples,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.93cbd183-498b-4dd0-8002-b0d49d00709c,Mycelium urinaire,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.a2288ed4-c0fc-44f0-bd97-156a7f9a6fb7,Prelevement de mycelium,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.6a5a0914-a34d-4d5c-954f-020dd925596c,Urine Trichomonas vaginalis,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.885869cb-6bef-4e7e-bb37-9719b6d82e7b,Prelevement de trichomonas vaginalis,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.dcceb533-a900-4f52-ae97-be1ad9b87bc9,Macrophages,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.20254f8b-7035-44b1-ba0b-6001f0559cf6,Cellules renales,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.555381cf-08f1-4924-9e62-2baf9b9e0d9c,Cylindres leucocytaires,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.bcb400cc-8560-449e-b5f0-39a1074f9acf,Cylindres granuleux,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.e653561e-861c-4406-a576-270518b4d2e4,Cylindres hyalins,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.529b1fbb-4575-41b0-b91d-93220cebeca8,Cylindres erythrocytaires,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.759af646-8555-41ad-aa62-0a932743bfe1,Cristaux,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.c108ee98-5abc-43f3-9653-fc920d79e133,Analyse d'urine,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.909a373e-b077-413d-a43e-dc4461f51f20,Coccies a Gram positif,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.19cde42f-3040-4d44-96c0-0fa740e748c8,Coccies a Gram negatif,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.485af765-a605-4438-88cc-f730414901ab,Diplocoques a Gram positif,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.53dd642f-a859-4706-a911-861128ad0a9a,Diplocoques a Gram negatif,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.5d687ffe-d0d8-48fe-a9c6-ed5d47cae953,Diplocoques a Gram negatif Intracellulaire,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.bb645ded-3ebb-4117-9f81-51d1ce236f1f,Bacilles a Gram positif,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.d4db3add-39c5-4d42-bd11-3dd6a32d136a,Bacilles a Gram negatif,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.1d86445f-f0af-4612-80f6-f9cacf055844,Coccobacilles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.784a3266-485d-49a3-851f-44hy93df4edb,Coloration de Gram (Frottis vaginal),product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.23b53f61-2845-4922-82a2-63e024afbcb2,Clue cell,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.784a3266-485d-49a3-851f-2a2c93df4edb,Goutte pendante,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.d00b8f8d-99f1-4d1b-806b-f2ca1353f7f8,Consistance des selles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.40f3ff80-44ff-4fad-b0eb-fa89ff05e1f8,Aspect des selles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.88094e41-e2c7-443f-8770-f46c78e03e7e,Couleur des selles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.4b81c46d-ca6d-4e76-928e-5c90e76a8df7,Parasites de selles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.1e196dd0-243f-4473-8103-cf7e52679e73,Microscopie des selles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.c960002a-a4fd-425d-b24a-c255862e3e03,Analyse des selles,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities
+init.94bea8da-9133-4f8f-bdb4-9118838ef6b0,Bacilloscopie des crachats en serie,product.categ_services_lab_test_orders,service,FALSE,Ordered quantities

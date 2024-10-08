@@ -1,0 +1,9 @@
+id,name,categ_id/id,type,purchase_ok,sale_ok,invoice_policy
+init.e5ccb21d-7027-4329-94dd-d15830a349ed,Kit insertion cathétérisme,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.2c69b395-2497-4fa7-98a3-4c72ed454ade,Suture Vicryl 0,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.529259f0-6958-46d0-86b3-73ef6a1446c8,Suture Vicryl 1,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.de3aaa6c-b859-4f39-ae08-8f37afed9fc4,Santé maternelle 1er trimestre,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.afc8d8e0-23ac-4968-8a6b-7e9c9f67023a,Jadelle,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.0758b62f-f0c5-494f-8ac3-3543ec014478,Urethral catheterization kit,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.4a2ea712-2ce8-4a32-88c0-0c2ff3f5ef89,Vicryl suture thread size 0,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.863861e4-da37-48c5-a0b2-0fad0fe9d721,Vicryl size 1,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities

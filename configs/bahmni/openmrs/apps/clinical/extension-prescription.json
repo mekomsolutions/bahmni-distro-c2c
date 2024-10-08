@@ -1,0 +1,56 @@
+{
+    "bahmniClinicalPatientsSearchActivePatientsForDrugOrders": {
+        "id": "bahmni.clinical.patients.search.drugOrderPatients",
+        "extensionPointId": "org.bahmni.patient.search",
+        "type": "config",
+        "extensionParams": {
+            "searchHandler": "emrapi.sqlSearch.drugOrderPatients",
+            "translationKey": "MODULE_LABEL_DRUGORDERS_KEY",
+            "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard/treatment",
+	     "view": "tabular"	
+        },
+        "label": "DrugOrders",
+        "order": 1,
+        "requiredPrivilege": "app:clinical"
+    },
+   "bahmniClinicalPatientsSearchPatientsDrugOrderDispensed": {
+        "id": "bahmni.clinical.patients.search.activePatientsDrugOrderDispensed",
+        "extensionPointId": "org.bahmni.patient.search",
+        "type": "config",
+        "extensionParams": {
+            "searchHandler": "emrapi.sqlSearch.drugOrderDispensedPatients",
+            "translationKey": "MODULE_LABEL_DRUGDISPENSED_KEY",
+            "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard/treatment",
+            "view": "tabular"
+	},
+        "label": "DrugDispensed",
+        "order": 2,
+        "requiredPrivilege": "app:clinical"
+    },
+    "bahmniClinicalPatientsSearchAllPatients": {
+        "id": "bahmni.clinical.patients.search.allPatients",
+        "extensionPointId": "org.bahmni.patient.search",
+        "type": "config",
+        "extensionParams": {
+            "translationKey": "MODULE_LABEL_ALL_KEY",
+            "forwardUrl": "#/programs/patient/{{patientUuid}}/consultationContext"
+        },
+        "label": "All",
+        "order": 3,
+        "requiredPrivilege": "app:clinical"
+    },
+  "bahmniClinicalBillingTreatmentMedicationTab": {
+    "id": "bahmni.clinical.billing.treatment",
+    "extensionPointId": "org.bahmni.clinical.consultation.board",
+    "type": "link",
+    "label": "Medications",
+    "translationKey": "Medications",
+    "extensionParams": {
+      "tabConfigName": "allMedicationTabConfig"
+    },
+    "url": "treatment",
+    "icon": "fa-user-md",
+    "order": 8,
+    "requiredPrivilege": "app:clinical:consultationTab"
+  }
+}

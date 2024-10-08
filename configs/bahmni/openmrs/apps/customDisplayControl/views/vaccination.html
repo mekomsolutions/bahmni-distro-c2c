@@ -1,0 +1,47 @@
+<section class="dashboard-section">
+    <h2 ng-if="true" ng-dialog="../../bahmni_config/openmrs/apps/customDisplayControl/views/vaccinationDetails.html"
+        ng-dialog-controller="vaccinationDetailsController" ng-dialog-data='{{vaccinations}}'
+        ng-dialog-class="ngdialog-theme-default ng-dialog-all-details-page" class="section-title has-link">
+        <span class="title-link">{{config.translationKey | translate}} </span>
+        <i class="fa fa-external-link"></i>
+    </h2>
+
+    <div ng-show="!vaccinations.length">
+        <div class="placeholder-text">
+            <p translate="DISPLAY_CONTROL_ERROR_MESSAGE_KEY"
+                translate-values="{displayControl : '{{config.translationKey | translate}}'}"></p>
+        </div>
+    </div>
+    <table ng-show="vaccinations.length">
+        <thead>
+            <tr>
+                <th>
+                    <span>{{ ::'VACCINE' | translate }}</span>
+                </th>
+                <th>
+                    <span>{{ ::'DATE_GIVEN' | translate }}</span>
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr ng-repeat="obs in vaccinations | orderBy:['name','-vaccationSequenceValue'] | unique:'name'">
+                <td>
+                    <span>
+                        {{obs.name | translate }}
+                        <b ng-if="obs.vaccationSequenceValue == null"></b>
+                        <b ng-if="obs.vaccationSequenceValue < 10"> ({{obs.vaccationSequenceValue }})</b>
+                        <b ng-if="obs.vaccationSequenceValue >10">
+                            ({{"Booster " + (obs.vaccationSequenceValue -10) }})</b>
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        {{obs.vaccinationDate | bahmniDate }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>

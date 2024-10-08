@@ -1,0 +1,460 @@
+{
+    "general": {
+        "translationKey": "DASHBOARD_TAB_GENERAL_KEY",
+        "displayByDefault": true,
+        "maxRecentlyViewedPatients": 10,
+        "printing": {
+            "title": "C2C",
+            "header": "Rapport général",
+            "logo": "/bahmni_config/openmrs/apps/home/C2C_logo.png",
+            "showNameAndImage": true
+        },
+        "sections": {
+            "patientInformation": {
+                "translationKey": "DASHBOARD_TITLE_PATIENT_INFORMATION_KEY",
+                "type": "patientInformation",
+                "displayOrder": 0,
+                "ageLimit": 100,
+                "patientAttributes": [
+                    "phoneNumber",
+                    "2ndPhoneNumber",
+                    "impl.contactPersonName",
+                    "impl.contactPersonPhoneNumber"
+                ],
+                "addressFields": [
+                    "address1",
+                    "address2",
+                    "address3",
+                    "cityVillage",
+                    "countryDistrict"
+                ]
+            },
+            "diagnosis": {
+                "translationKey": "DASHBOARD_TITLE_DIAGNOSIS_KEY",
+                "type": "diagnosis",
+                "showCertainty": true,
+                "showOrder": true,
+                "showDetailsButton": true,
+                "displayOrder": 1
+            },
+            "nutritionalValues": {
+                "translationKey": "DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 2,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Taille",
+                        "Poids",
+                        "BMI",
+                        "BMI STATUS",
+                        "Périmètre bracchial"
+                    ],
+                    "showDetailsButton": true,
+                    "numberOfVisits": 2
+                },
+                "expandedViewConfig": {
+                    "conceptNames": [
+                        "Taille",
+                        "Poids",
+                        "BMI",
+                        "BMI STATUS",
+                        "Périmètre bracchial"
+                    ],
+                    "numberOfVisits": 2,
+                    "scope": "latest",
+                    "showDetailsButton": true,
+                    "pivotTable": {}
+                }
+            },
+            "conditions": {
+                "translationKey": "CONDITION_LIST_DISPLAY_CONTROL_TITLE",
+                "type": "conditionsList",
+                "displayOrder": 3
+            },
+            "treatments": {
+                "translationKey": "DASHBOARD_TITLE_TREATMENTS_KEY",
+                "type": "treatment",
+                "displayOrder": 4,
+                "dashboardConfig": {
+                    "showFlowSheet": true,
+                    "showListView": true,
+                    "showRoute": true,
+                    "showDrugForm": true,
+                    "numberOfVisits": 5,
+                    "showOtherActive": true,
+                    "showDetailsButton": true
+                },
+                "expandedViewConfig": {
+                    "translationKey": "DASHBOARD_TITLE_TREATMENTS_KEY",
+                    "showFlowSheet": true,
+                    "showListView": true,
+                    "showRoute": true,
+                    "showDrugForm": true,
+                    "numberOfVisits": 10,
+                    "showOtherActive": true,
+                    "showDetailsButton": true
+                }
+            },
+            "billingStatus": {
+                "type": "custom",
+                "displayOrder": 2,
+                "showDetailsButton": true,
+                "config": {
+                  "retireLinesConditions": [["CANCELLED"],["ORDER", "FULLY_INVOICED"]],
+                  "nonApprovedConditions": [
+                    ["ORDER", "NON_INVOICED"],
+                    ["INVOICE", "OVERDUE", "NOT_PAID"]
+                  ],
+                  "approvedConditions": [
+                    ["INVOICE", "PAID"],
+                    ["INVOICE", "NOT_OVERDUE"]
+                  ],
+                  "patientUuidFieldName": "uuid",
+                  "orderExternalIdFieldName": "external_order_id",
+                  "showDetailsButton": true,
+                  "translationKey": "IMPL_BILLING_STATUS",
+                  "template": "<billing-status></billing-status>"
+                }
+              },
+              "customControl": {
+                "type": "custom",
+                "displayOrder": 5,
+                "showDetailsButton": true,
+                "config": {
+                    "showDetailsButton": true,
+                    "translationKey": "RECENT_VACCINATIONS",
+                    "template": "<vaccination></vaccination>",
+                    "vaccinationSets": [
+                        "Historique vaccinal"
+                    ]
+                }
+            },
+            "vitals": {
+                "translationKey": "DASHBOARD_TITLE_VITALS_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 6,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Groupe tension artérielle",
+                        "Température",
+                        "Pouls",
+                        "Frequence respiratoire",
+                        "Saturation d'oxygène",
+                        "Périmètre bracchial"
+                    ],
+                    "showDetailsButton": true,
+                    "numberOfVisits": 2
+                },
+                "expandedViewConfig": {
+                    "conceptNames": [
+                        "Groupe tension artérielle",
+                        "Température",
+                        "Pouls",
+                        "Frequence respiratoire",
+                        "Saturation d'oxygène",
+                        "Périmètre bracchial"
+                    ],
+                    "numberOfVisits": 2,
+                    "scope": "latest",
+                    "showDetailsButton": true,
+                    "pivotTable": {}
+                }
+            },
+            "visits": {
+                "translationKey": "DASHBOARD_TITLE_VISITS_KEY",
+                "type": "visits",
+                "displayOrder": 7,
+                "dashboardConfig": {
+                    "title": null,
+                    "maximumNoOfVisits": 8,
+                    "groupByVisits": true
+                }
+            },
+            "allergies": {
+                "translationKey": "DASHBOARD_TITLE_ALLERGIES_VALUES_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 8,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Allergies"
+                    ],
+                    "showDetailsButton": true,
+                    "numberOfVisits": 3
+                },
+                "expandedViewConfig": {
+                    "conceptNames": [
+                        "Allergies"
+                    ],
+                    "numberOfVisits": 3,
+                    "scope": "latest",
+                    "showDetailsButton": true,
+                    "pivotTable": {}
+                }
+            },
+            "patientAppointments": {
+                "type": "custom",
+                "displayOrder": 9,
+                "config": {
+                    "title": "DASHBOARD_TITLE_APPOINTMENTS_KEY",
+                    "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
+                }
+            },
+            "ANC": {
+                "translationKey": "DASHBOARD_TITLE_ANC_VALUES_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 10,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Première visite",
+                        "Age gestationnel estimé"
+                    ],
+                    "showDetailsButton": true,
+                    "numberOfVisits": 3
+                },
+                "expandedViewConfig": {
+                    "conceptNames": [
+                        "Première visite",
+                        "Age gestationnel estimé"
+                    ],
+                    "numberOfVisits": 6,
+                    "scope": "latest",
+                    "showDetailsButton": true,
+                    "pivotTable": {}
+                }
+            },
+            "labOrders": {
+                "orderType": "Lab Order",
+                "type": "ordersControl",
+                "title": "Lab Orders",
+                "displayOrder": 11,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Échantillons de laboratoire"
+                    ],
+                    "numberOfVisits": "4",
+                    "showHeader": true,
+                    "obsIgnoreList": [
+                        "Supine"
+                    ]
+                },
+                "expandedViewConfig": {
+                    "conceptNames": [
+                        "Échantillons de laboratoire"
+                    ],
+                    "showHeader": true
+                }
+            },
+            "labResults": {
+                "translationKey": "DASHBOARD_TITLE_LAB_RESULTS_KEY",
+                "type": "labOrders",
+                "displayOrder": 12,
+                "dashboardConfig": {
+                    "title": null,
+                    "numberOfVisits": 6,
+                    "showChart": false,
+                    "showTable": true,
+                    "showNormalLabResults": true,
+                    "showCommentsExpanded": true,
+                    "showAccessionNotes": true,
+                    "showDetailsButton": false
+                },
+                "expandedViewConfig": {
+                    "numberOfVisits": 10
+                }
+            }
+        }
+    },
+    "trends": {
+        "translationKey": "DASHBOARD_TAB_TRENDS_KEY",
+        "displayByDefault": true,
+        "maxRecentlyViewedPatients": 10,
+        "printing": {
+            "title": "C2C",
+            "header": "Tendances",
+            "logo": "/bahmni_config/openmrs/apps/home/C2C_logo.png",
+            "showNameAndImage": true
+        },
+        "sections": {
+            "heightForAgeChart": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_HEIGHT_AGE_KEY",
+                "config": {
+                    "yAxisConcepts": [
+                        "Taille"
+                    ],
+                    "referenceData": "charts/heightForAge.csv",
+                    "numberOfVisits": 20
+                },
+                "displayOrder": 10
+            },
+            "weightForAgeChart": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_WEIGHT_AGE_KEY",
+                "config": {
+                    "yAxisConcepts": [
+                        "Poids"
+                    ],
+                    "referenceData": "charts/weightForAge.csv",
+                    "numberOfVisits": 20
+                },
+                "displayOrder": 11
+            },
+            "BP": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_BLOOD_PRESSURE",
+                "config": {
+                    "yAxisConcepts": [
+                        "Systolic Blood Pressure",
+                        "Diastolic Blood Pressure"
+                    ],
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
+                },
+                "displayOrder": 12
+            },
+            "weight": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_WEIGHT",
+                "config": {
+                    "yAxisConcepts": [
+                        "Poids"
+                    ],
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
+                },
+                "displayOrder": 13
+            },
+            "BMI": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_BMI",
+                "config": {
+                    "yAxisConcepts": [
+                        "BMI"
+                    ],
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
+                },
+                "displayOrder": 14
+            },
+            "observationGraph": {
+                "type": "observationGraph",
+                "translationKey": "DASHBOARD_TITLE_PULSE",
+                "config": {
+                    "yAxisConcepts": [
+                        "Pouls"
+                    ],
+                    "xAxisConcept": "observationDateTime",
+                    "numberOfVisits": 10
+                },
+                "displayOrder": 15
+            }
+        }
+    },
+    "referral": {
+        "translationKey": "DASHBOARD_TAB_REFERRAL_KEY",
+        "displayByDefault": true,
+        "maxRecentlyViewedPatients": 10,
+        "printing": {
+            "title": "C2C",
+            "header": "Formulaire de référence",
+            "logo": "/bahmni_config/openmrs/apps/home/C2C_logo.png",
+            "showNameAndImage": true
+        },
+        "sections": {
+            "referralNote": {
+                "translationKey": "DASHBOARD_TITLE_REFERRAL_NOTE_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 0,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Référence"
+                    ],
+                    "showDetailsButton": false,
+                    "numberOfVisits": 1
+                }
+            },
+            "nutritionalValues": {
+                "translationKey": "DASHBOARD_TITLE_VITALS_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 1,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Température",
+                        "Pouls",
+                        "Frequence respiratoire",
+                        "Tension artérielle systolique",
+                        "Tension artérielle diastolique",
+                        "Saturation d'oxygène",
+                        "Périmètre bracchial"
+                    ],
+                    "showDetailsButton": false,
+                    "numberOfVisits": 1
+                }
+            },
+            "allergies": {
+                "translationKey": "DASHBOARD_TITLE_ALLERGIES_VALUES_KEY",
+                "type": "vitals",
+                "isObservation": true,
+                "displayOrder": 2,
+                "dashboardConfig": {
+                    "conceptNames": [
+                        "Allergies"
+                    ],
+                    "showDetailsButton": false,
+                    "numberOfVisits": 3
+                }
+            },
+            "conditions": {
+                "translationKey": "CONDITION_LIST_DISPLAY_CONTROL_TITLE",
+                "type": "conditionsList",
+                "displayOrder": 3
+            },
+            "treatments": {
+                "translationKey": "DASHBOARD_TITLE_TREATMENTS_KEY",
+                "type": "treatment",
+                "displayOrder": 4,
+                "dashboardConfig": {
+                    "showFlowSheet": true,
+                    "showListView": true,
+                    "showRoute": true,
+                    "showDrugForm": true,
+                    "numberOfVisits": 5,
+                    "showOtherActive": true,
+                    "showDetailsButton": false
+                }
+            },
+            "diagnosis": {
+                "translationKey": "DASHBOARD_TITLE_DIAGNOSIS_KEY",
+                "type": "diagnosis",
+                "showCertainty": true,
+                "showOrder": true,
+                "showDetailsButton": false,
+                "displayOrder": 1
+            },
+            "labResults": {
+                "translationKey": "DASHBOARD_TITLE_LAB_RESULTS_KEY",
+                "type": "labOrders",
+                "displayOrder": 12,
+                "dashboardConfig": {
+                    "title": null,
+                    "numberOfVisits": 6,
+                    "showChart": false,
+                    "showTable": true,
+                    "showNormalLabResults": true,
+                    "showCommentsExpanded": true,
+                    "showAccessionNotes": true,
+                    "showDetailsButton": false
+                },
+                "expandedViewConfig": {
+                    "numberOfVisits": 10
+                }
+            }
+        }
+    }
+}
