@@ -81,10 +81,18 @@ export class Bahmni {
     await expect(this.page.getByText(/lab samples/i)).toBeVisible();
   }
 
+  async navigateToVisitsDashboard() {
+    await this.page.locator('#dashboard-link span.patient-name').click();
+    await delay(5000);
+    await expect(this.page.locator('a.visit')).toBeVisible();
+    await this.page.locator('a.visit').click();
+  }
+
   async createLabOrder() {
     await this.page.getByText('Blood', { exact: true }).click();
     await this.page.getByText('Malaria').click();
     await this.save();
+    await delay(5000);
   }
 
   async reviseLabOrder() {
@@ -92,12 +100,14 @@ export class Bahmni {
     await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
     await this.page.getByText(/hematocrit/i).click();
     await this.save();
+    await delay(5000);
   }
 
   async discontinueLabOrder() {
     await this.page.getByText('Blood', { exact: true }).click();
     await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
     await this.save();
+    await delay(5000);
   }
 
   async navigateToPatientDashboard() {
