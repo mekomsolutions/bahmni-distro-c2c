@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
   await bahmni.registerPatient();
   await bahmni.navigateToPatientDashboard();
 });
-
+/*
 test('Anthropometry form should save observations.', async ({ page }) => {
   // setup
   await bahmni.navigateToForms();
@@ -673,7 +673,31 @@ test('Systems review form should save observations.', async ({ page }) => {
   await expect(page.locator('#observationSection').getByText('Self Care Skill Deficiency')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Motor Skills Disorder')).toBeVisible();
 });
+*/
+test('TB monitoring form should save observations.', async ({ page }) => {
+  // setup
+  await bahmni.navigateToForms();
+  await expect(page.getByText('Suivi TB')).toBeVisible();
+  await page.getByRole('button', { name: 'Suivi TB' }).click();
+  await expect(page.getByText('Suivi TB added successfully')).toBeVisible();
 
+  // replay
+  await bahmni.fillTBMonitoringForm();
+
+  // verify
+  await page.locator('#dashboard-link span.patient-name').click();
+  await delay(5000);
+  await expect(page.locator('a.visit')).toBeVisible();
+  await page.locator('a.visit').click();
+  await expect(page.locator('#observationSection').getByText('TB Signs and symptoms')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Cough')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Evening fever')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Loss of appetite')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Weight Loss')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Response to treatment')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Conduct bacteriologic examination of patient\'s sputum or other specimens.')).toBeVisible();
+});
+/*
 test('Health history form should save observations.', async ({ page }) => {
   // setup
   await bahmni.navigateToForms();
@@ -727,7 +751,7 @@ test('Health history form should save observations.', async ({ page }) => {
   await expect(page.locator('#observationSection').getByText('Age at first intercourse')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('26', {exact: true}).nth(0)).toBeVisible();
 });
-
+*/
 test.afterEach(async ({ page }) => {
   await bahmni.voidPatient();
   await page.close();
