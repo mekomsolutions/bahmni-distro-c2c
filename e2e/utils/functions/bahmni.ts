@@ -324,7 +324,9 @@ export class Bahmni {
     await this.page.getByRole('button', { name: 'Evening fever' }).click();
     await this.page.getByRole('button', { name: 'Loss of appetite' }).click();
     await this.page.getByRole('button', { name: 'Weight Loss' }).click();
-    await this.page.locator('div textarea').nth(0).fill('Conduct bacteriologic examination of patient\'s sputum or other specimens.');
+    await this.page.locator('div textarea').nth(0).fill('Regular follow-up tests to check for bacterial load');
+    await this.page.locator('div textarea').nth(1).fill('Adjustments based on response and resistance patterns');
+    await this.page.locator('div textarea').nth(2).fill('Schedule regular check-ups for progress evaluation');
     await this.save();
   }
 
