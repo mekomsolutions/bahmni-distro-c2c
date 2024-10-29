@@ -61,7 +61,7 @@
           <execution>
             <!-- Copy openmrs configs -->
             <id>Copy local openmrs config resources</id>
-            <phase>package</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
@@ -79,7 +79,7 @@
           <execution>
             <!-- Copy bahmni configs -->
             <id>Copy local bahmni config resources</id>
-            <phase>package</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
@@ -97,7 +97,7 @@
           <execution>
             <!-- Copy odoo configs -->
             <id>Copy local odoo config resources</id>
-            <phase>package</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
