@@ -674,6 +674,32 @@ test('Systems review form should save observations.', async ({ page }) => {
   await expect(page.locator('#observationSection').getByText('Motor Skills Disorder')).toBeVisible();
 });
 
+test('TB monitoring form should save observations.', async ({ page }) => {
+  // setup
+  await bahmni.navigateToForms();
+  await expect(page.getByText('Suivi TB')).toBeVisible();
+  await page.getByRole('button', { name: 'Suivi TB' }).click();
+  await expect(page.getByText('Suivi TB added successfully')).toBeVisible();
+
+  // replay
+  await bahmni.fillTBMonitoringForm();
+
+  // verify
+  await page.locator('#dashboard-link span.patient-name').click();
+  await delay(5000);
+  await expect(page.locator('a.visit')).toBeVisible();
+  await page.locator('a.visit').click();
+  await expect(page.locator('#observationSection').getByText('TB Signs and symptoms')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Cough')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Evening fever')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Loss of appetite')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Weight Loss')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Response to treatment')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Regular follow-up tests to check for bacterial load')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Adjustments based on response and resistance patterns')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('Schedule regular check-ups for progress evaluation')).toBeVisible();
+});
+
 test('Health history form should save observations.', async ({ page }) => {
   // setup
   await bahmni.navigateToForms();
