@@ -246,7 +246,7 @@ test('Prenatal consultation form should save observations.', async ({ page }) =>
   await expect(page.locator('#observationSection').getByText('Number of Weeks')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('18', {exact: true}).nth(0)).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Risky Pregnancy')).toBeVisible();
-  await expect(page.locator('#observationSection').getByText('No')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('No', { exact: true })).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Signs and Symptoms', {exact:true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Abdominal pain')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Duration')).toBeVisible();
