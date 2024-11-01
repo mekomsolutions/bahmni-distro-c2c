@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { BAHMNI_URL, ODOO_URL } from '../utils/configs/globalSetup';
 import { Odoo } from '../utils/functions/odoo';
 import { Bahmni, patientName } from '../utils/functions/bahmni';
-import { BAHMNI_URL, ODOO_URL } from '../utils/configs/globalSetup';
 
 let odoo: Odoo;
 let bahmni: Bahmni;

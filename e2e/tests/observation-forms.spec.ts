@@ -26,10 +26,7 @@ test('Anthropometry form should save observations.', async ({ page }) => {
   await bahmni.fillAnthropometryForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.locator('#observationSection h2')).toHaveText('Observations');
   await expect(page.locator('#observationSection').getByText('BMI Data')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('22.49')).toBeVisible();
@@ -40,7 +37,7 @@ test('Anthropometry form should save observations.', async ({ page }) => {
   await expect(page.locator('#observationSection').getByText('Weight')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('65')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Head Circumference')).toBeVisible();
-  await expect(page.locator('#observationSection').getByText('23')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('23', { exact: true })).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Abdominal Diameter')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('25.5')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Mid-Upper Arm Circumference')).toBeVisible();
@@ -58,10 +55,7 @@ test('Gynecological ultrasound form should save observations.', async ({ page })
   await bahmni.fillGynecologicalUltrasoundForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Echographie gynécologique')).toBeVisible();
   await expect(page.locator('div:nth-child(2) span.value-text-only').getByText('Normal left ovary. The right ovary contains a complex mass. No free fluid in the pelvis.')).toBeVisible();
 });
@@ -77,10 +71,7 @@ test('Obstetric ultrasound 1 form should save observations.', async ({ page }) =
   await bahmni.fillObstetricUltrasound1Form();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Echographie obstétricale 1')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Confirmed Pregnancy')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Yes')).toBeVisible();
@@ -118,10 +109,7 @@ test('Obstetric ultrasound 2 form should save observations.', async ({ page }) =
   await bahmni.fillObstetricUltrasound2Form();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Echographie obstétricale 2')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Number of Fetuses')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('1', {exact: true}).nth(0)).toBeVisible();
@@ -165,10 +153,7 @@ test('Obstetric ultrasound 3 form should save observations.', async ({ page }) =
   await bahmni.fillObstetricUltrasound3Form();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Echographie obstétricale 3')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Number of Fetuses')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('2', {exact: true}).nth(0)).toBeVisible();
@@ -193,10 +178,7 @@ test('Physical examination form should save observations.', async ({ page }) => 
   await bahmni.fillPhysicalExaminationForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Examen physique')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('General Examination')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Normal').nth(0)).toBeVisible();
@@ -219,10 +201,7 @@ test('Means of transportation form should save observations.', async ({ page }) 
   await bahmni.fillMeansOfTransportationForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Moyen de transport')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Mode of Arrival', { exact: true })).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Minibus')).toBeVisible();
@@ -239,10 +218,7 @@ test('Family planning form should save observations.', async ({ page }) => {
   await bahmni.fillFamilyPlanningForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Planification familiale')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('FP administred')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Depo Provera Injection')).toBeVisible();
@@ -263,17 +239,14 @@ test('Prenatal consultation form should save observations.', async ({ page }) =>
   await bahmni.fillPrenatalConsultationForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Consultation prénatale')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Visit number')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Three')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Number of Weeks')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('18', {exact: true}).nth(0)).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Risky Pregnancy')).toBeVisible();
-  await expect(page.locator('#observationSection').getByText('No')).toBeVisible();
+  await expect(page.locator('#observationSection').getByText('No', { exact: true })).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Signs and Symptoms', {exact:true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Abdominal pain')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Duration')).toBeVisible();
@@ -296,10 +269,7 @@ test('Reference form should save observations.', async ({ page }) => {
   await bahmni.fillReferenceForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Référence')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Referred By')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Doctor Fredric Hanandez')).toBeVisible();
@@ -320,10 +290,7 @@ test('New case of tuberculosis form should save observations.', async ({ page })
   await bahmni.fillNewCaseOfTuberculosisForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Nouveau cas de tuberculose')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Number of contacts identified')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('16', {exact: true}).nth(0)).toBeVisible();
@@ -363,10 +330,7 @@ test('Triage form should save observations.', async ({ page }) => {
   await bahmni.fillTriageForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Triage', {exact: true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Triage level')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Emergency')).toBeVisible();
@@ -383,9 +347,7 @@ test('Reason for consultation form should save observations.', async ({ page }) 
   await bahmni.fillReasonForConsultationForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Motif de consultation', {exact: true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Reason for Consultation', {exact: true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Assault by animal suspected of rabies')).toBeVisible();
@@ -408,10 +370,7 @@ test('Unauthorized departure form should save observations.', async ({ page }) =
   await bahmni.fillUnauthorizedDepartureForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Départ non autorisé', {exact: true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Left without permission')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('No', {exact: true}).nth(0)).toBeVisible();
@@ -430,10 +389,7 @@ test('Vital signs form should save observations.', async ({ page }) => {
   await bahmni.fillVitalSignsForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Signes vitaux', {exact: true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Vital Signs')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Pain Scale')).toBeVisible();
@@ -464,10 +420,7 @@ test('Gynecological examination form should save observations.', async ({ page }
   await bahmni.fillGynecologicalExaminationForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Examen gynécologique', {exact: true})).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Age at Menarche')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('14 Years')).toBeVisible();
@@ -500,10 +453,7 @@ test('Emergency monitoring form should save observations.', async ({ page }) => 
   await bahmni.fillEmergencyMonitoringForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Suivi d’urgences')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Date/Time')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('19 Aug 24 4:30 pm')).toBeVisible();
@@ -525,10 +475,7 @@ test('Vaccinations form should save observations.', async ({ page }) => {
   await bahmni.fillVaccinationsForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Vaccinations', {exact: true}).nth(0)).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Pentavalent Vaccination')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Sequence number', {exact: true})).toBeVisible();
@@ -552,10 +499,7 @@ test('Nutrition form should save observations.', async ({ page }) => {
   await bahmni.fillNutritionForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Nutrition', {exact: true}).nth(0)).toBeVisible();
   await expect(page.locator('#observationSection').getByText('First Visit')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('No', {exact: true}).nth(0)).toBeVisible();
@@ -600,10 +544,7 @@ test('Systems review form should save observations.', async ({ page }) => {
   await bahmni.fillSystemsReviewForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Examen des systèmes', {exact: true}).nth(0)).toBeVisible();
   await expect(page.locator('#observationSection').getByText('General Set')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Night sweats')).toBeVisible();
@@ -711,10 +652,7 @@ test('Health history form should save observations.', async ({ page }) => {
   await bahmni.fillHealthHistoryForm();
 
   // verify
-  await page.locator('#dashboard-link span.patient-name').click();
-  await delay(5000);
-  await expect(page.locator('a.visit')).toBeVisible();
-  await page.locator('a.visit').click();
+  await bahmni.navigateToVisitsDashboard();
   await expect(page.getByText('Historique de santé', {exact: true}).nth(0)).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Insect bites and stings')).toBeVisible();
   await expect(page.locator('#observationSection').getByText('Reason', {exact: true}).first()).toBeVisible();
