@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { BAHMNI_URL, ODOO_URL } from '../utils/configs/globalSetup';
 import { Odoo } from '../utils/functions/odoo';
 import { Bahmni, patientName } from '../utils/functions/bahmni';
-import { BAHMNI_URL, ODOO_URL } from '../utils/configs/globalSetup';
 
 let odoo: Odoo;
 let bahmni: Bahmni;
@@ -128,6 +128,7 @@ test('Editing the details of a Bahmni patient with a synced drug order edits the
   // setup
   await bahmni.navigateToMedications();
   await bahmni.createMedication();
+
   await odoo.open();
   await odoo.searchCustomer();
   await expect(page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)')).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
@@ -151,7 +152,7 @@ test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotatio
   await expect(page.locator('tr.o_data_row:nth-child(1) td:nth-child(4)')).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).click();
   await expect(page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span')).toContainText('Aspirine Co 81mg');
-  await expect(page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span')).toContainText('Aspirine Co 81mg | 560.0 Ampoule(s) | 2.0 Application(s) - Q3H - 5 Semaine(s)');
+  await expect(page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span')).toContainText('Aspirine Co 81mg | 40.0 Comprime(s) | 1.0 Comprime(s) - Q3H - 5 Jour(s)');
 
   // replay
   await bahmni.navigateToPatientDashboard();
@@ -163,7 +164,7 @@ test('Revising a synced OpenMRS drug order edits the corresponding Odoo quotatio
   await odoo.searchCustomer();
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).click();
   await expect(page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span')).toContainText('Aspirine Co 81mg');
-  await expect(page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span')).toContainText('Aspirine Co 81mg | 120.0 Comprime(s) | 4.0 Comprime(s) - Q4H - 5 Jour(s)');
+  await expect(page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span')).toContainText('Aspirine Co 81mg | 60.0 Comprime(s) | 2.0 Comprime(s) - Q4H - 5 Jour(s)');
 });
 
 test('Discontinuing a synced Bahmni drug order for an Odoo customer with a single quotation line removes the corresponding quotation.', async ({ page }) => {
@@ -176,7 +177,7 @@ test('Discontinuing a synced Bahmni drug order for an Odoo customer with a singl
   await expect(page.locator('tr.o_data_row:nth-child(1) td:nth-child(8) span')).toHaveText('Quotation');
   await page.getByRole('cell', { name: `${patientName.givenName + ' ' + patientName.familyName }` }).click();
   await expect(page.locator('td.o_data_cell.o_field_cell.o_list_many2one.o_product_configurator_cell.o_required_modifier>span')).toContainText('Aspirine Co 81mg');
-  await expect(page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span')).toContainText('Aspirine Co 81mg | 560.0 Ampoule(s) | 2.0 Application(s) - Q3H - 5 Semaine(s)');
+  await expect(page.locator('td.o_data_cell.o_field_cell.o_list_text.o_section_and_note_text_cell.o_required_modifier span')).toContainText('Aspirine Co 81mg | 40.0 Comprime(s) | 1.0 Comprime(s) - Q3H - 5 Jour(s)');
 
   // replay
   await bahmni.navigateToPatientDashboard();

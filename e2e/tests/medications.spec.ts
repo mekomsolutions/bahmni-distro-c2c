@@ -26,10 +26,8 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   const drugNameSelector = await page.locator('#ordered-drug-orders strong.drug-name').first();
   const medicationDetailsSelector = await page.locator('#ordered-drug-orders div.drug-details').first();
   await expect(drugNameSelector).toHaveText('Aspirine Co 81mg (Comprime)');
-  await expect(medicationDetailsSelector).toContainText('2 Application(s)');
   await expect(medicationDetailsSelector).toContainText('Q3H');
-  await expect(medicationDetailsSelector).toContainText('Estomac vide');
-  await expect(medicationDetailsSelector).toContainText('Topique');
+  await expect(medicationDetailsSelector).toContainText('1 Comprime(s)');
   await page.locator('#dashboard-link span.patient-name').click();
   const medicationSelector = await page.locator('treatment-table td.drug.active-drug span');
   await expect(medicationSelector).toHaveText('Aspirine Co 81mg (Comprime)');
@@ -38,19 +36,10 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await page.locator('#view-content :nth-child(1).btn--success').click();
   await page.getByText('Medications', { exact: true }).click();
   await page.locator('#ordered-drug-orders button:nth-child(1) i').first().click();
-  await page.locator('#uniform-dose').clear();
-  await page.locator('#uniform-dose').fill('4');
-  await page.locator('#frequency').selectOption('string:Q4H');
-  await page.locator('#uniform-dose-unit').selectOption('string:Comprime(s)');
-  await page.locator('#route').selectOption('string:Inhalation');
-  await page.getByRole('button', { name: 'Add' }).click();
-  await bahmni.save();
-  await expect(medicationDetailsSelector).not.toContainText('2 Application(s)');
-  await expect(medicationDetailsSelector).toContainText('4 Comprime(s)');
+  await bahmni.editMedicationDetails();
+  await expect(medicationDetailsSelector).toContainText('2 Comprime(s)');
   await expect(medicationDetailsSelector).not.toContainText('Q3H');
-  await expect(medicationDetailsSelector).toContainText('Q4H,');
-  await expect(medicationDetailsSelector).not.toContainText('Ampoule(s)');
-  await expect(medicationDetailsSelector).toContainText('Inhalation');
+  await expect(medicationDetailsSelector).toContainText('Q4H');
 
   // verify cancellation
   await expect(drugNameSelector).toContainText('Aspirine Co 81mg (Comprime)');

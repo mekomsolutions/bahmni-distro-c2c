@@ -13,6 +13,7 @@ dotenv.config();
 
 export const BAHMNI_URL = `${process.env.TEST_ENVIRONMENT}` == 'uat' ? `${process.env.BAHMNI_URL_UAT}` : `${process.env.BAHMNI_URL_DEV}`;
 export const ODOO_URL = `${process.env.TEST_ENVIRONMENT}` == 'uat' ? `${process.env.ODOO_URL_UAT}` : `${process.env.ODOO_URL_DEV}`;
+export const OPENELIS_URL = `${process.env.TEST_ENVIRONMENT}` == 'uat' ? `${process.env.OPENELIS_URL_UAT}` : `${process.env.OPENELIS_URL_DEV}`;
 
 async function globalSetup() {
   const requestContext = await request.newContext();

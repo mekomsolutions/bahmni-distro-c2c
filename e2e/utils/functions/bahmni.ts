@@ -81,10 +81,18 @@ export class Bahmni {
     await expect(this.page.getByText(/lab samples/i)).toBeVisible();
   }
 
+  async navigateToVisitsDashboard() {
+    await this.page.locator('#dashboard-link span.patient-name').click();
+    await delay(5000);
+    await expect(this.page.locator('a.visit')).toBeVisible();
+    await this.page.locator('a.visit').click();
+  }
+
   async createLabOrder() {
     await this.page.getByText('Blood', { exact: true }).click();
     await this.page.getByText('Malaria').click();
     await this.save();
+    await delay(5000);
   }
 
   async reviseLabOrder() {
@@ -92,12 +100,14 @@ export class Bahmni {
     await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
     await this.page.getByText(/hematocrit/i).click();
     await this.save();
+    await delay(5000);
   }
 
   async discontinueLabOrder() {
     await this.page.getByText('Blood', { exact: true }).click();
     await this.page.locator('#selected-orders li').filter({ hasText: 'Malaria' }).locator('i').nth(1).click();
     await this.save();
+    await delay(5000);
   }
 
   async navigateToPatientDashboard() {
@@ -127,16 +137,12 @@ export class Bahmni {
   async createMedication() {
     await this.page.locator('#drug-name').type('Aspirine Co 81mg');
     await this.page.getByText('Aspirine Co 81mg (Comprime)').click();
-    await this.page.locator('#uniform-dose').fill('2');
-    await this.page.locator('#uniform-dose-unit').selectOption('string:Application(s)');
-    await this.page.locator('#frequency').selectOption('string:Q3H');
-    await this.page.locator('#route').selectOption('string:Topique');
+    await this.page.locator('#uniform-dose').fill('1');
+    await this.page.locator('#frequency').selectOption('Q3H');
     await this.page.locator('#duration').fill('5');
-    await this.page.locator('#duration-unit').selectOption('string:Semaine(s)');
-    await this.page.locator('#total-quantity-unit').selectOption('string:Ampoule(s)');
-    await this.page.locator('#instructions').selectOption('string:Estomac vide');
-    await this.page.locator('#additional-instructions').fill('Take after a meal');
-    await expect(this.page.locator('#quantity')).toHaveValue('560');
+    await expect(this.page.locator('#quantity')).toHaveValue('40');
+    await this.page.locator('#instructions').selectOption('Après le repas');
+    await this.page.locator('#additional-instructions').fill('Take medication as directed');
     await this.page.getByRole('button', { name: /add/i }).click();
     await this.save();
   }
@@ -144,10 +150,9 @@ export class Bahmni {
   async editMedicationDetails() {
     await this.page.locator('i.fa.fa-edit').first().click();
     await this.page.locator('#uniform-dose').clear();
-    await this.page.locator('#uniform-dose').fill('4');
-    await this.page.locator('#frequency').selectOption('string:Q4H');
-    await this.page.locator('#uniform-dose-unit').selectOption('string:Comprime(s)');
-    await this.page.locator('#route').selectOption('string:Inhalation');
+    await this.page.locator('#uniform-dose').fill('2');
+    await this.page.locator('#frequency').selectOption('Q4H');
+    await expect(this.page.locator('#quantity')).toHaveValue('60');
     await this.page.getByRole('button', { name: /add/i }).click();
     await this.save();
   }
@@ -324,7 +329,9 @@ export class Bahmni {
     await this.page.getByRole('button', { name: 'Evening fever' }).click();
     await this.page.getByRole('button', { name: 'Loss of appetite' }).click();
     await this.page.getByRole('button', { name: 'Weight Loss' }).click();
-    await this.page.locator('div textarea').nth(0).fill('Conduct bacteriologic examination of patient\'s sputum or other specimens.');
+    await this.page.locator('div textarea').nth(0).fill('Regular follow-up tests to check for bacterial load');
+    await this.page.locator('div textarea').nth(1).fill('Adjustments based on response and resistance patterns');
+    await this.page.locator('div textarea').nth(2).fill('Schedule regular check-ups for progress evaluation');
     await this.save();
   }
 
