@@ -1,0 +1,11 @@
+Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Short name:en,Short name:fr,Description:en,Description:km,Data class,Data type,Complex data handler,Answers,Members,Allow decimals,Units,Normal low,Normal high,Absolute low,Absolute high,_version:1,_order:800
+e5ccb21d-7027-4329-94dd-d15830a349ed,,,Kit insertion cathétérisme,Kit insertion cathétérisme,Kit insertion cathétérisme,Kit insertion cathétérisme,,,Services,Text,,,,,,,,,,,
+2c69b395-2497-4fa7-98a3-4c72ed454ade,,,Suture Vicryl 0,Suture Vicryl 0,Suture Vicryl 0,Suture Vicryl 0,,,Services,Text,,,,,,,,,,,
+529259f0-6958-46d0-86b3-73ef6a1446c8,,,Suture Vicryl 1,Suture Vicryl 1,Suture Vicryl 1,Suture Vicryl 1,,,Services,Text,,,,,,,,,,,
+afc8d8e0-23ac-4968-8a6b-7e9c9f67023a,,,Jadelle,Jadelle,Jadelle,Jadelle,,,Services,Text,,,,,,,,,,,
+0758b62f-f0c5-494f-8ac3-3543ec014478,,,Urethral catheterization kit,Urethral catheterization kit,Urethral catheterization kit,Urethral catheterization kit,,,Services,Text,,,,,,,,,,,
+4a2ea712-2ce8-4a32-88c0-0c2ff3f5ef89,,,Vicryl suture thread size 0,Vicryl suture thread size 0,Vicryl suture thread size 0,Vicryl suture thread size 0,,,Services,Text,,,,,,,,,,,
+863861e4-da37-48c5-a0b2-0fad0fe9d721,,,Vicryl size 1,Vicryl size 1,Vicryl size 1,Vicryl size 1,,,Services,Text,,,,,,,,,,,
+de3aaa6c-b859-4f39-ae08-8f37afed9fc4,,,Santé maternelle 1er trimestre,Santé maternelle 1er trimestre,Santé maternelle 1er trimestre,Santé maternelle 1er trimestre,,,Services,Text,,,,,,,,,,,
+5e91458b-dc49-4cb8-90d4-382d9babbe0a,,,Service Orders,Service Orders,Service Orders,Service Orders,,,ConvSet,N/A,,,e5ccb21d-7027-4329-94dd-d15830a349ed;2c69b395-2497-4fa7-98a3-4c72ed454ade;529259f0-6958-46d0-86b3-73ef6a1446c8;de3aaa6c-b859-4f39-ae08-8f37afed9fc4;863861e4-da37-48c5-a0b2-0fad0fe9d721;4a2ea712-2ce8-4a32-88c0-0c2ff3f5ef89;0758b62f-f0c5-494f-8ac3-3543ec014478;afc8d8e0-23ac-4968-8a6b-7e9c9f67023a,,,,,,,,
+f196d7f1-ca64-417d-bcfe-cc48124a43fc,,,All Service Orders,All Service Orders,Service,Services,,,ConvSet,N/A,,,Service Orders,,,,,,,,

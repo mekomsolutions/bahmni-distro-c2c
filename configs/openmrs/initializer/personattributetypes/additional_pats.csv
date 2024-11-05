@@ -1,0 +1,5 @@
+Uuid,Void/Retire,Name,Description,Format,Foreign uuid,Searchable,Edit privilege,_order:1000
+2601fa62-49c3-11ea-be03-ffa5a050979e,,impl.contactPersonType,Type de contact,java.lang.String,,,,
+4d769542-4bfa-11ea-8e3d-2727b4b143f6,,impl.maritalStatus-freeText,Situation Matrimoniale,java.lang.String,,,,
+828dd396-4c20-11ea-a667-9b1b455865b7,,impl.employment-freeText,Profession,java.lang.String,,,,
+7f1f4fe1-dca7-46c4-b782-243bbf86288e,,impl.nickname-freeText,Surnom,java.lang.String,,,,

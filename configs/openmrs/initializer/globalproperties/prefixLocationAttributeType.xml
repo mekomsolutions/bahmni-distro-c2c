@@ -1,0 +1,8 @@
+<config>
+  <globalProperties>
+    <globalProperty>
+      <property>idgen.prefixLocationAttributeType</property>
+      <value>id_prefix</value>
+    </globalProperty>
+  </globalProperties>
+</config>

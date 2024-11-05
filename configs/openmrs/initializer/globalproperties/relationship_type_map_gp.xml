@@ -1,0 +1,8 @@
+<config>
+  <globalProperties>
+    <globalProperty>
+      <property>bahmni.relationshipTypeMap</property>
+      <value>{"provider":["Doctor"],"patient":["Parent","Sibling"]}</value>
+    </globalProperty>
+  </globalProperties>
+</config>
