@@ -29,8 +29,9 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
-### Version 1.7.0
+### Version 2.0.0
 * Added a new location H9
+* Merged OpenMRS, Bahmni and Odoo configs into the distro
 
 ### Version 1.6.3
 * Made MSPP - Digestive" concept set to include "Gastritis crisis(K29.7)" and exclude "Gastritis"
