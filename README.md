@@ -30,7 +30,7 @@ The target version of OpenMRS Core.
 ## Release Notes
 
 ### Version 1.6.4
-* Add a new location H9
+* Added a new location H9
 
 ### Version 1.6.3
 * Made MSPP - Digestive" concept set to include "Gastritis crisis(K29.7)" and exclude "Gastritis"
