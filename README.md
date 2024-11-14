@@ -29,7 +29,7 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
-### Version 1.6.4
+### Version 1.7.0
 * Added a new location H9
 
 ### Version 1.6.3
