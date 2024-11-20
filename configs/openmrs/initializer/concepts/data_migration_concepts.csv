@@ -2,6 +2,6 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:f
 b3cdc446-c350-4503-9372-5d707641196b,,,Drug Ordered,Médicament,Drug Ordered,Médicament,,,Misc,Text,,,,,,,,,,
 9083fd3e-19f3-460b-a2eb-9022c628c275,,,Quantity Prescribed,Quantité prescrite,Quantity Prescribed,Quantité prescrite,,,Misc,Numeric,,,TRUE,,,,,,,
 8d835bc7-fdaf-4f21-83df-73c7c919cdbf,,,Drug Recommended Dose,Dose recommandée,Drug Recommended Dose,Dose recommandée,,,Misc,Numeric,,,TRUE,,,,,,,
-994a3b2d-1aa8-4717-a7a9-8b7cf609a00f,,,Drug Order,Prescription de médicaments,Drug Order,Prescription de médicaments,,,Misc,N/A,,b3cdc446-c350-4503-9372-5d707641196b;f5e7648d-9dfb-4506-9602-000ab940a197;9083fd3e-19f3-460b-a2eb-9022c628c275;8d835bc7-fdaf-4f21-83df-73c7c919cdbf,,,,,,,,
+994a3b2d-1aa8-4717-a7a9-8b7cf609a00f,,,Drug Order,Prescription de médicaments,Drug Order,Prescription de médicaments,,,Misc,N/A,,b3cdc446-c350-4503-9372-5d707641196b;9083fd3e-19f3-460b-a2eb-9022c628c275;8d835bc7-fdaf-4f21-83df-73c7c919cdbf,,,,,,,,
 f5fb6b5b-1f77-4be9-bd6e-165612338318,,,Test Ordered,Test laboratoire,Test Ordered,Test laboratoire,,,Misc,Text,,,,,,,,,,
 008f59ed-c964-4657-b89c-5b90d1d9a53e,,,Lab Test Order,Prescription de tests laboratoire,Lab Test Order,Prescription de tests laboratoire,,,Misc,N/A,,f5fb6b5b-1f77-4be9-bd6e-165612338318,,,,,,,,

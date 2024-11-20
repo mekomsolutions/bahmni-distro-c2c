@@ -78,6 +78,68 @@
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>validator</id>
+      <build>
+        <plugins>
+          <!-- copy over merged/packaged OpenMRS config for validation at the integration-test phase -->
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Copy OpenMRS Initializer configs for validation</id>
+                <phase>pre-integration-test</phase>
+                <configuration>
+                  <target>
+                    <copy todir="${project.build.directory}/validator/configuration">
+                      <fileset
+                        dir="${project.build.directory}/${project.artifactId}-${project.version}/openmrs_config">
+                        <!-- Exclude RelationshipTypes-1.zip -->
+                        <exclude name="**/metadatasharing/RelationshipTypes-1.zip"/>
+                        <exclude name="**/patientidentifiertypes/voids.csv"/>
+                        <exclude name="**/roles/roles.csv"/>
+                        <exclude name="**/concepts/commons.csv"/>
+                        <exclude name="**/concepts/disposition.csv"/>
+                        <exclude name="**/concepts/drugs_concepts.csv"/>
+                        <exclude name="**/concepts/lab_tests.csv"/>
+                        <exclude name="**/concepts/openelis.csv"/>
+                        <exclude name="**/concepts/anthropometric.csv"/>
+                        <exclude name="**/bahmniforms/*"/>
+                      </fileset>
+                    </copy>
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- hooking the OpenMRS config validation to the integration-test phase -->
+          <plugin>
+            <groupId>org.openmrs.maven.plugins</groupId>
+            <artifactId>openmrs-packager-maven-plugin</artifactId>
+            <version>1.7.0</version>
+            <executions>
+              <execution>
+                <id>Validate OpenMRS Initializer configs</id>
+                <phase>integration-test</phase>
+                <goals>
+                  <goal>validate-configurations</goal>
+                </goals>
+                <configuration>
+                  <sourceDir>
+                    ${project.build.directory}/validator/configuration</sourceDir>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <repositories>
     <repository>
       <id>mks-nexus-public</id>
