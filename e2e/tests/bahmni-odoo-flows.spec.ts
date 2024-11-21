@@ -47,6 +47,7 @@ test('Editing the details of a Bahmni patient with a synced lab order edits the 
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
+  await bahmni.navigateToPatientRegistationForm();
   await bahmni.updatePatientDetails();
 
   // verify
@@ -135,6 +136,7 @@ test('Editing the details of a Bahmni patient with a synced drug order edits the
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
+  await bahmni.navigateToPatientRegistationForm();
   await bahmni.updatePatientDetails();
 
   // verify

@@ -35,6 +35,12 @@ export class Bahmni {
     }
     await this.page.goto(`${BAHMNI_URL}/bahmni/registration`);
     await this.page.locator('a').filter({ hasText: /create new/i }).click();
+    await expect(this.page.getByText('Address Information')).toBeVisible();
+    await expect(this.page.getByText('Additional Identifiers')).toBeVisible();
+    await expect(this.page.getByText('Other Information')).toBeVisible();
+    await expect(this.page.getByText('Additional Patient Information')).toBeVisible();
+    await expect(this.page.getByText('Relationships')).toBeVisible();
+    await expect(this.page.getByText('Death information')).toBeVisible();
     await this.page.locator('#givenName').fill(`${patientName.givenName}`);
     await this.page.locator('#familyName').fill(`${patientName.familyName}`);
     await this.page.locator('#gender').selectOption('F');
@@ -52,9 +58,9 @@ export class Bahmni {
   }
 
   async updatePatientDetails() {
-    await this.page.getByRole('link', { name: /registration/i }).click();
     await this.page.locator('#name').fill(`${patientName.familyName}`);
     await this.page.locator('form[name="searchByNameForm"]').getByRole('button', { name: /search/i }).click();
+    await expect(this.page.locator('tbody tr td:nth-child(5)')).toHaveText(`${patientName.givenName + ' ' + patientName.familyName}`);
     await this.page.locator('#view-content td:nth-child(1) a').click();
     await expect(this.page.locator('#givenName')).toBeVisible();
     await this.page.locator('#givenName').clear();
@@ -120,6 +126,10 @@ export class Bahmni {
     await this.page.locator('#view-content :nth-child(1).btn--success').click();
     await expect(this.page.getByRole('button', { name: /add new obs form/i })).toBeVisible();
     await this.page.getByRole('button', { name: /add new obs form/i  }).click();
+  }
+
+  async navigateToPatientRegistationForm() {
+    await this.page.getByRole('link', { name: /registration/i }).click();
   }
 
   async navigateToDiagnosis() {
