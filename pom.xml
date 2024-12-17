@@ -97,9 +97,9 @@
                         dir="${project.build.directory}/${project.artifactId}-${project.version}/openmrs_config">
                         <!-- Exclude RelationshipTypes-1.zip -->
                         <exclude name="**/metadatasharing/RelationshipTypes-1.zip"/>
-                        <!-- <exclude name="**/patientidentifiertypes/voids.csv"/>
-                        <exclude name="**/roles/roles.csv"/>
-                        <exclude name="**/bahmniforms/"/> -->
+                        <exclude name="**/patientidentifiertypes/voids.csv"/>
+                        <!-- <exclude name="**/roles/roles.csv"/> -->
+                        <!-- <exclude name="**/bahmniforms/"/> --> -->
                       </fileset>
                     </copy>
                   </target>
