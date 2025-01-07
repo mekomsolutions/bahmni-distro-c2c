@@ -3,6 +3,11 @@
     <record id="c2c_config_settings" model="res.config.settings">
         <field name="group_cash_rounding" eval="True"/>
     </record>
+        <!-- Add a default value for the group_cash_rounding field -->
+    <record id="default_group_cash_rounding" model="ir.default">
+        <field name="account.move" ref="base.field_res_config_settings__group_cash_rounding"/>
+        <field name="1" eval="True"/>
+    </record> 
     <function model="res.config.settings" name="execute">
         <value model="res.config.settings"
                search="[('id', '=', ref('c2c_config_settings'))]"/>
