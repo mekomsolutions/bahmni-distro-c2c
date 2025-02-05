@@ -1,5 +1,7 @@
 Uuid,Void/Retire,Same as mappings,Fully specified name:en,Fully specified name:fr,Short name:en,Short name:fr,Description:en,Description:km,Data class,Data type,Complex data handler,Answers,Members,Allow decimals,Units,Normal low,Normal high,Absolute low,Absolute high,_version:1,_order:800
 e5ccb21d-7027-4329-94dd-d15830a349ed,,,Kit insertion cathétérisme,Kit insertion cathétérisme,Kit insertion cathétérisme,Kit insertion cathétérisme,,,Services,Text,,,,,,,,,,,
+3f5fb30e-6d4d-487f-b6ef-11d68affd985,,,Urethral catheterization,Cathétérisme urétral,Urethral catheterization,Cathétérisme urétral,,,Services,Text,,,,,,,,,,,
+1070ef85-dbf6-4354-b1d1-4b728e7dbfea,,,Nebulization,Nébulisation,Nebulization,Nébulisation,,,Services,Text,,,,,,,,,,,
 2c69b395-2497-4fa7-98a3-4c72ed454ade,,,Suture Vicryl 0,Suture Vicryl 0,Suture Vicryl 0,Suture Vicryl 0,,,Services,Text,,,,,,,,,,,
 529259f0-6958-46d0-86b3-73ef6a1446c8,,,Suture Vicryl 1,Suture Vicryl 1,Suture Vicryl 1,Suture Vicryl 1,,,Services,Text,,,,,,,,,,,
 afc8d8e0-23ac-4968-8a6b-7e9c9f67023a,,,Jadelle,Jadelle,Jadelle,Jadelle,,,Services,Text,,,,,,,,,,,
