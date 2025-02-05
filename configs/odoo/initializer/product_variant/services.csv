@@ -1,5 +1,7 @@
 id,name,categ_id/id,type,purchase_ok,sale_ok,invoice_policy
 init.e5ccb21d-7027-4329-94dd-d15830a349ed,Kit insertion cathétérisme,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.3f5fb30e-6d4d-487f-b6ef-11d68affd985,Urethral catheterization,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
+init.1070ef85-dbf6-4354-b1d1-4b728e7dbfea,Nebulization,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
 init.2c69b395-2497-4fa7-98a3-4c72ed454ade,Suture Vicryl 0,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
 init.529259f0-6958-46d0-86b3-73ef6a1446c8,Suture Vicryl 1,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
 init.de3aaa6c-b859-4f39-ae08-8f37afed9fc4,Santé maternelle 1er trimestre,product.categ_services_service_orders,service,FALSE,TRUE,Ordered quantities
