@@ -29,55 +29,96 @@ The target version of OpenMRS Core.
 
 ## Release Notes
 
-### Version 2.0.0
-* Added a new location H9
-* Merged OpenMRS, Bahmni and Odoo configs into the distro
+<details>
+  <summary><b>Version 2.0.0</b></summary>
 
-### Version 1.6.3
-* Made MSPP - Digestive" concept set to include "Gastritis crisis(K29.7)" and exclude "Gastritis"
-* Created panels for CRP and ASO lab tests
+   <ul>
+    <li>Added a new location H9.</li>
+    <li>Merged OpenMRS, Bahmni and Odoo configs into the distro</li>
+  </ul>
+</details>
 
-### Version 1.6.2
-* Updated some lab tests
+<details>
+  <summary><b>Version 1.6.3</b></summary>
+   <ul>
+    <li>Made "MSPP - Digestive" concept set to include "Gastritis crisis(K29.7)" and exclude "Gastritis".</li>
+    <li>Created panels for CRP and ASO lab tests.</li>
+  </ul>
+</details>
 
-### Version 1.6.1
-* Updated vaccinations concept set
+<details>
+  <summary><b>Version 1.6.2</b></summary>
+   <ul>
+    <li>Updated some lab tests.</li>
+  </ul>
+</details>
 
-### Version 1.6.0
-* Archived list of drugs in Odoo and Bahmni
-* Added a question in the Vaccination form 'Is the child fully vaccinated?'
-* Fixed Sync issue of Amoxicillin syrup, and metronidazole & Nystatin ovule
-* Fixed the MSPP Report Emergency Section figures to reflect the actual urgency
-* Enabled MSPP Vaccinations report to capture data on 'Fully vaccinated patients'
-* Scheduled task was set to run every hour by default to 'Close stale visits'
-* Documented the process to extract and upload data with centralized Ozone Analytics
-* Distro was updated to use latest Ozone Analytics
-* Fixed 404 error on C2C Analytics servers
-* Modified Lab Tests in OpenELIS
+<details>
+  <summary><b>Version 1.6.1</b></summary>
+   <ul>
+    <li>Updated vaccinations concept set.</li>
+  </ul>
+</details>
 
-### Version 1.5.1
-* Fixed Metronidazole drug variant concept uuids.
-* Removed 'Sayana Press' from drugs containing the term.
-* Added answers to Human Chorionic Gonadotrophin concept
+<details>
+  <summary><b>Version 1.6.0</b></summary>
+   <ul>
+    <li>Archived list of drugs in Odoo and Bahmni.</li>
+    <li>Added a question in the Vaccination form 'Is the child fully vaccinated?'.</li>
+    <li>Fixed Sync issue of Amoxicillin syrup, and metronidazole & Nystatin ovule.</li>
+    <li>Fixed the MSPP Report Emergency Section figures to reflect the actual urgency.</li>
+    <li>Enabled MSPP Vaccinations report to capture data on 'Fully vaccinated patients'.</li>
+    <li>Scheduled task was set to run every hour by default to 'Close stale visits'.</li>
+    <li>Documented the process to extract and upload data with centralized Ozone Analytics.</li>
+    <li>Updated Distro to use latest Ozone Analytics.</li>
+    <li>Fixed 404 error on C2C Analytics servers.</li>
+    <li>Modified Lab Tests in OpenELIS.</li>
+  </ul>
+</details>
 
-### Version 1.5.0
-* Add vaccination and family planning community patient lists
-* Fix H-pylori and HCG lab results
-* Fix drug name presentation for multi-ingredient medications
-* Add Missing Drugs and Medical Supplies
+<details>
+  <summary><b>Version 1.5.1</b></summary>
+   <ul>
+    <li>Fixed Metronidazole drug variant concept uuids.</li>
+    <li>Removed 'Sayana Press' from drugs containing the term.</li>
+    <li>Added answers to Human Chorionic Gonadotrophin concept.</li>
+  </ul>
+</details>
 
-### Version 1.4.0
-* Activated billing status widget
-* Added bulk cancel orders Odoo add-on
-* Patient header to display weight
-* Ability to close visits after 12h of inactivity
-* Fixed EIP data corrupted after power cut
-* Added more tests and services
-* Added new concept - 'IUD' to family planning - FP administer
-* Adjustment of visit types to add field/at clinic options
+<details>
+  <summary><b>Version 1.5.0</b></summary>
+   <ul>
+    <li>Added vaccination and family planning community patient lists.</li>
+    <li>Fixed H-pylori and HCG lab results.</li>
+    <li>Fixed drug name presentation for multi-ingredient medications.</li>
+    <li>Added Missing Drugs and Medical Supplies.</li>
+  </ul>
+</details>
 
-### Version 1.3.0
-* Removed pricing information from Odoo Config
+<details>
+  <summary><b>Version 1.4.0</b></summary>
+   <ul>
+    <li>Activated billing status widget.</li>
+    <li>Added bulk cancel orders Odoo add-on.</li>
+    <li>Patient header to display weight.</li>
+    <li>Added ability to close visits after 12h of inactivity.</li>
+    <li>Fixed EIP data corrupted after power cut.</li>
+    <li>Added more tests and services.</li>
+    <li>Added new concept - 'IUD' to family planning - FP administer.</li>
+    <li>Adjusted visit types to add field/at clinic options.</li>
+  </ul>
+</details>
 
-### Version 1.2.0
-* Made HSC form compatible with C2C
+<details>
+  <summary><b>Version 1.3.0</b></summary>
+   <ul>
+    <li>Removed pricing information from Odoo Config.</li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>Version 1.2.0</b></summary>
+   <ul>
+    <li>Made HSC form compatible with C2C.</li>
+  </ul>
+</details>
