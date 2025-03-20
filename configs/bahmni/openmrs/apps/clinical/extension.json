@@ -107,6 +107,19 @@
     "order": 4,
     "requiredPrivilege": "app:clinical"
   },
+    "bahmniClinicalPatientsSearchPostnatalePatient": {
+    "id": "bahmni.clinical.patients.search.post-natalePatients",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "searchHandler": "emrapi.sqlSearch.hsc.Post-natale",
+      "translationKey": "MODULE_LABEL_POST_NATALE_KEY",
+      "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+    },
+    "label": "Post-natale",
+    "order": 2,
+    "requiredPrivilege": "app:clinical"
+  },
   "bahmniClinicalPatientsSearchFamilyPlanningPatient": {
     "id": "bahmni.clinical.patients.search.familyPlanningPatients",
     "extensionPointId": "org.bahmni.patient.search",
