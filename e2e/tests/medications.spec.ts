@@ -15,7 +15,9 @@ test.beforeEach(async ({ page }) => {
 
 test('Create, revise and discontinue a drug order.', async ({ page }) => {
   // setup
-  await bahmni.registerPatient();
+  await bahmni.navigateToPatientRegistationPage();
+  await bahmni.enterPatientDetails();
+  await bahmni.startPatientVisit();
 
   // replay
   await bahmni.navigateToPatientDashboard();

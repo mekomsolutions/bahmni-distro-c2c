@@ -18,7 +18,8 @@ test('Register and edit a patient.', async ({ page }) => {
   await expect(page.getByText(/patient documents/i)).toBeVisible();
 
   // replay
-  await bahmni.registerPatient();
+  await bahmni.enterPatientDetails();
+  await bahmni.startPatientVisit();
 
   // verify creation
   await bahmni.navigateToPatientDashboard();
@@ -26,7 +27,7 @@ test('Register and edit a patient.', async ({ page }) => {
 
   // verify revision
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.navigateToPatientRegistationForm();
+  await bahmni.navigateToPatientRegistationPage();
   await bahmni.updatePatientDetails();
   await bahmni.navigateToPatientDashboard();
   await expect(page.locator('#patientContext span:nth-child(2)')).toContainText(`${patientName.updatedGivenName}` + ' ' + `${patientName.familyName}`)

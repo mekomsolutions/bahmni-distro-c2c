@@ -16,7 +16,9 @@ test.beforeEach(async ({ page }) => {
 
 test('Create and revise a diagnosis.', async ({ page }) => {
   // setup
-  await bahmni.registerPatient();
+  await bahmni.navigateToPatientRegistationPage();
+  await bahmni.enterPatientDetails();
+  await bahmni.startPatientVisit();
 
   // replay
   await bahmni.navigateToPatientDashboard();

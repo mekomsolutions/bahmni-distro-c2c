@@ -15,7 +15,9 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByText(/clinical/i)).toBeVisible();
   await expect(page.getByText(/admin/i)).toBeVisible();
   await expect(page.getByText(/patient documents/i)).toBeVisible();
-  await bahmni.registerPatient();
+  await bahmni.navigateToPatientRegistationPage();
+  await bahmni.enterPatientDetails();
+  await bahmni.startPatientVisit();
   await bahmni.navigateToPatientDashboard();
 });
 
@@ -47,7 +49,7 @@ test('Editing the details of a Bahmni patient with a synced lab order edits the 
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.navigateToPatientRegistationForm();
+  await bahmni.navigateToPatientRegistationPage();
   await bahmni.updatePatientDetails();
 
   // verify
@@ -136,7 +138,7 @@ test('Editing the details of a Bahmni patient with a synced drug order edits the
 
   // replay
   await page.goto(`${BAHMNI_URL}`);
-  await bahmni.navigateToPatientRegistationForm();
+  await bahmni.navigateToPatientRegistationPage();
   await bahmni.updatePatientDetails();
 
   // verify
