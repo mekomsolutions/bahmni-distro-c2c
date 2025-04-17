@@ -27,13 +27,16 @@ export class Bahmni {
     await expect(this.page).toHaveURL(/.*home/);
   }
 
-  async registerPatient() {
+  async navigateToRegistrationPage() {
+    await this.page.goto(`${BAHMNI_URL}/bahmni/registration`);
+  }
+
+  async enterPatientDetails() {
     patientName = {
       givenName : `e2e_test_${Array.from({ length: 4 }, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('')}`,
       familyName : `${Array.from({ length: 8 }, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('')}`, 
       updatedGivenName : `${Array.from({ length: 8 }, () => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('')}`,
     }
-    await this.page.goto(`${BAHMNI_URL}/bahmni/registration`);
     await this.page.locator('a').filter({ hasText: /create new/i }).click();
     await expect(this.page.getByText('Address Information')).toBeVisible();
     await expect(this.page.getByText('Additional Identifiers')).toBeVisible();
@@ -45,7 +48,19 @@ export class Bahmni {
     await this.page.locator('#familyName').fill(`${patientName.familyName}`);
     await this.page.locator('#gender').selectOption('F');
     await this.page.locator('#ageYears').fill(`${Math.floor(Math.random() * 99)}`);
+  }
+
+  async startPatientVisit() {
     await this.page.locator('#view-content div>ul>li button').click();
+    await expect(this.page.getByRole('button', { name: /save/i })).toBeEnabled();
+    await this.page.getByRole('button', { name: /priority/i }).click();
+    await this.page.getByRole('button', { name: /save/i }).click();
+    await expect(this.page.getByText('error')).not.toBeVisible();
+  }
+
+  async startPostnatalVisit() {
+    await this.page.locator('button[bm-pop-over-trigger]').click();
+    await this.page.getByRole('button', { name: 'Start Post-natale visit' }).click();
     await expect(this.page.getByRole('button', { name: /save/i })).toBeEnabled();
     await this.page.getByRole('button', { name: /priority/i }).click();
     await this.page.getByRole('button', { name: /save/i }).click();
@@ -128,7 +143,7 @@ export class Bahmni {
     await this.page.getByRole('button', { name: /add new obs form/i  }).click();
   }
 
-  async navigateToPatientRegistationForm() {
+  async navigateToPatientRegistationPage() {
     await this.page.getByRole('link', { name: /registration/i }).click();
   }
 
