@@ -20,6 +20,7 @@ test.beforeEach(async ({ page }) => {
 test('Starting a postnatal visit shows the patient in the Postnatal tab and updates the MSPP visit report', async ({ page, context }) => {
   let initialVisitsCount = 0;
   let updatedVisitsCount = 0;
+  const newPage = await context.waitForEvent('page');
 
   await test.step('Get initial MSPP visit count from report', async () => {
     await page.goto(`${BAHMNI_URL}/openmrs`);
@@ -28,7 +29,7 @@ test('Starting a postnatal visit shows the patient in the Postnatal tab and upda
     await expect(page.getByRole('link', { name: /view report/i })).toBeVisible();
     await page.getByRole('link', { name: /view report/i }).click();
 
-    const newPage = await context.waitForEvent('page');
+
     await newPage.bringToFront();
     await expect(newPage.getByText('MSPP Visits Report').nth(0)).toBeVisible();
     const rawText = await newPage.locator('tr:has-text("Total") td:nth-of-type(2)').textContent();
@@ -58,7 +59,6 @@ test('Starting a postnatal visit shows the patient in the Postnatal tab and upda
     await expect(page.getByRole('link', { name: /view report/i })).toBeVisible();
     await page.getByRole('link', { name: /view report/i }).click();
 
-    const newPage = await context.waitForEvent('page');
     await newPage.bringToFront();
     await expect(newPage.getByText(/MSPP Visits Report/).nth(0)).toBeVisible();
     const rawText = await newPage.locator('tr:has-text("Total") td:nth-of-type(2)').textContent();
