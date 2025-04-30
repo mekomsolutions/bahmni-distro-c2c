@@ -6,8 +6,6 @@ import { OpenMRS } from '../utils/functions/openmrs';
 let bahmni: Bahmni;
 let openmrs: OpenMRS;
 
-test.use({ video: 'on' });
-
 test.beforeEach(async ({ page }) => {
   bahmni = new Bahmni(page);
   openmrs = new OpenMRS(page);
