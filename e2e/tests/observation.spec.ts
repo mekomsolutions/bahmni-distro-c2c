@@ -11,7 +11,9 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByText(/clinical/i)).toBeVisible();
   await expect(page.getByText(/admin/i)).toBeVisible();
   await expect(page.getByText(/patient documents/i)).toBeVisible();
-  await bahmni.registerPatient();
+  await bahmni.navigateToPatientRegistationPage();
+  await bahmni.enterPatientDetails();
+  await bahmni.startPatientVisit();
   await bahmni.navigateToPatientDashboard();
 });
 

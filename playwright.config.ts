@@ -8,14 +8,13 @@ const config: PlaywrightTestConfig = {
   expect: {
     timeout: 40 * 1000,
   },
-  fullyParallel: true,
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
   workers: process.env.CI ? 1 : 1,
   retries: 0,
   reporter: process.env.CI ? [['junit', { outputFile: 'results.xml' }], ['html']] : [['html']],
   use: {
     baseURL: `${process.env.BAHMNI_URL_DEV}`,
-    storageState: 'e2e/storageState.json',
     ignoreHTTPSErrors: true,
   },
   projects: [
@@ -23,7 +22,11 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chromium'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: { width: 1920, height: 1080 },
+        storageState: undefined,
+        launchOptions: {
+          args: ['--disable-cache', '--disable-application-cache']
+        },
       },
     },
   ],
