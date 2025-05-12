@@ -25,6 +25,7 @@
   <properties>
     <!-- Configs -->
     <bahmni.distro.haiti.version>3.1.0-SNAPSHOT</bahmni.distro.haiti.version>
+    <odoo.auto.rounding.version>1.0.0-SNAPSHOT</odoo.auto.rounding.version>
     <distro.baseDir>${project.build.directory}/${project.artifactId}-${project.version}</distro.baseDir>
     <distro.openmrsconfigDir>${distro.baseDir}/openmrs_config</distro.openmrsconfigDir>
     <distro.bahmniconfigDir>${distro.baseDir}/bahmni_config</distro.bahmniconfigDir>
@@ -50,6 +51,14 @@
       <artifactId>bahmni-distro-haiti</artifactId>
       <type>zip</type>
       <version>${bahmni.distro.haiti.version}</version>
+    </dependency>
+
+    <!--  Odoo addons-->
+    <dependency>
+      <groupId>com.ozonehis</groupId>
+      <artifactId>odoo-auto-rounding</artifactId>
+      <type>zip</type>
+      <version>${odoo.auto.rounding.version}</version>
     </dependency>
   </dependencies>
 
