@@ -25,7 +25,7 @@
   <properties>
     <!-- Configs -->
     <bahmni.distro.haiti.version>3.1.0-SNAPSHOT</bahmni.distro.haiti.version>
-    <odoo.auto.rounding.version>1.0.0-SNAPSHOT</odoo.auto.rounding.version>
+    <odoo.auto.rounding.version>1.0.0-20250417.211138-1</odoo.auto.rounding.version>
     <distro.baseDir>${project.build.directory}/${project.artifactId}-${project.version}</distro.baseDir>
     <distro.openmrsconfigDir>${distro.baseDir}/openmrs_config</distro.openmrsconfigDir>
     <distro.bahmniconfigDir>${distro.baseDir}/bahmni_config</distro.bahmniconfigDir>
