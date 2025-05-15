@@ -2,6 +2,10 @@ id,name,categ_id/id,type,purchase_ok,sale_ok,invoice_policy
 init.707688af-bab8-41ae-8d4e-a64f83e9411a,H. Pylori (Selles),product.categ_services_lab_test_orders,service,FALSE,TRUE,Ordered quantities
 init.4c36027d-0b5f-4c10-9bc9-6b8bb4e65d11,Anti-strepyolysine O,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
 init.ce0f626b-0cc3-463f-b703-e4b7c5e60f90,C Reactive Protein,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.f3d99459-abd7-4b37-8266-808ac2f9e24e,Trophozoïtes,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.1923080f-cf86-4298-9b62-18df3a7b6c9a,Gametocytes,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.d3f5c178-7b5a-4147-8f5e-1c3b6e1e9354,Schizontes,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
+init.8cf4837d-33f8-4d15-ac34-bd3194384d57,Malaria Microscopic Test,product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
 init.916755e9-b121-4565-8e63-8c187a06a204,Human Chorionic Gonadotrophin,product.categ_services_lab_test_orders,service,FALSE,TRUE,Ordered quantities
 init.a9d907d9-92d2-4453-8dc5-d32bf7f25324,Anti-strepyolysine O (coded),product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
 init.ee37c9bd-ee01-4292-b1ff-ac5ee62ebe80,C Reactive Protein (coded),product.categ_services_lab_test_orders,service,FALSE,FALSE,Ordered quantities
