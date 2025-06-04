@@ -23,7 +23,7 @@ test('Create, revise and discontinue lab tests.', async ({ page }) => {
   await bahmni.navigateToPatientDashboard();
   await bahmni.navigateToLabSamples();
   await page.getByText('Blood', { exact: true }).click();
-  await page.getByText('Malaria').click();
+  await page.getByText('Malaria', { exact: true }).click();
   await page.getByText('Urine').click();
   await page.getByText('Gravindex').click();
   await page.getByText('Stool').click();
