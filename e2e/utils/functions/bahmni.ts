@@ -111,7 +111,7 @@ export class Bahmni {
 
   async createLabOrder() {
     await this.page.getByText('Blood', { exact: true }).click();
-    await this.page.getByText('Malaria').click();
+    await this.page.getByText('Malaria', { exact: true }).click();
     await this.save();
     await delay(5000);
   }
