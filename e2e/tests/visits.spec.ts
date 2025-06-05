@@ -27,6 +27,7 @@ test('Starting a postnatal visit shows the patient in the Postnatal tab and upda
   const newPage = await context.waitForEvent('page');
   await newPage.bringToFront();
   await expect(newPage.getByText('MSPP Visits Report').nth(0)).toBeVisible(), delay(1000);
+  await expect (newPage.getByText(/visite post-natale/i)).toBeVisible();
   let rawText = await newPage.locator('tr:has-text("Total") td:nth-of-type(2)').textContent();
   const initialVisitsCount = Number(rawText?.trim());
 
@@ -51,6 +52,7 @@ test('Starting a postnatal visit shows the patient in the Postnatal tab and upda
   await newPage.bringToFront();
   await expect(newPage.getByText(/MSPP Visits Report/).nth(0)).toBeVisible(), delay(1000);
   rawText = await newPage.locator('tr:has-text("Total") td:nth-of-type(2)').textContent();
+  await expect (newPage.getByText(/visite post-natale/i)).toBeVisible();
   let updatedVisitsCount = Number(rawText?.trim());
   await expect(updatedVisitsCount).toBe(initialVisitsCount + 1);
 });
