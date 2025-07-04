@@ -180,7 +180,6 @@ test('Published free text lab results from OpenELIS are viewable in the Bahmni l
   await expect(page.locator('#Lab-Results span.value')).toHaveText('Abnormal level');
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });

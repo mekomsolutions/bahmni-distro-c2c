@@ -34,7 +34,6 @@ test('Register and edit a patient.', async ({ page }) => {
   await expect(page.locator('#patientContext span:nth-child(2)')).toContainText(`${patientName.updatedGivenName}` + ' ' + `${patientName.familyName}`)
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });

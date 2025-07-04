@@ -57,7 +57,6 @@ test('Starting a postnatal visit shows the patient in the Postnatal tab and upda
   await expect(updatedVisitsCount).toBe(initialVisitsCount + 1);
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });

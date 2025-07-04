@@ -53,7 +53,6 @@ test('Create, revise and discontinue a drug order.', async ({ page }) => {
   await expect(medicationStatus).toContainText('Stopped');
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });
