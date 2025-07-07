@@ -30,11 +30,28 @@ The target version of OpenMRS Core.
 ## Release Notes
 
 <details>
-  <summary><b>Version 2.0.0</b></summary>
+  <summary><b>Version 2.1.0</b></summary>
+   <ul>
+    <li>Used shared GA workflows to build and publish + periodically check dependency changes.</li>
+    <li>Updated list of diagnoses in Bahmni and the MSPP report.</li>
+    <li>Updated list of products and services in Bahmni and Odoo.</li>
+    <li>Added e2e test for patient registration form.</li>
+    <li>Unretired Sérum de rehydratation oral.</li>
+    <li>Fixed typo in 'Alcohol-related disorder' diagnosis.</li>
+    <li>Added UUIDs for Nebulization and Urethral catheterization to Service Orders concept.</li>
+    <li>Added Malaria Microscopic Test.</li>
+    <li>Improved README by making release versions collapsible.</li>
+    <li>Added extension for post-natale visit.</li>
+    <li>Added e2e test for odoo auto rounding.</li>
+    <li>Upgraded Playwright version to 1.53.2</li>
+  </ul>
+</details>
 
+<details>
+  <summary><b>Version 2.0.0</b></summary>
    <ul>
     <li>Added a new location H9.</li>
-    <li>Merged OpenMRS, Bahmni and Odoo configs into the distro</li>
+    <li>Merged OpenMRS, Bahmni and Odoo configs into the distro.</li>
   </ul>
 </details>
 
