@@ -4,7 +4,7 @@
   "license": "MPL-2.0",
   "description": "These are end-to-end automated tests covering Bahmni distro C2C workflows",
   "scripts": {
-    "e2e-tests-c2c": "npx playwright test bahmni-odoo"
+    "e2e-tests-c2c": "npx playwright test"
   },
   "keywords": [],
   "devDependencies": {
