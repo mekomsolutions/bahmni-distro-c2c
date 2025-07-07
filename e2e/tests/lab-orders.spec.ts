@@ -79,7 +79,6 @@ test('Create, revise and discontinue lab tests.', async ({ page }) => {
   await expect(page.locator('#Lab-Orders').getByText('Stool Colour')).not.toBeVisible();
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });

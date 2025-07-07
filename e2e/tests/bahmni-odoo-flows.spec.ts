@@ -197,7 +197,26 @@ test('Discontinuing a synced Bahmni drug order for an Odoo customer with a singl
   await expect(page.getByText('Aspirine Co 81mg')).not.toBeVisible();
 });
 
-test.afterEach(async ({ page }) => {
+test('Auto rounding method should round up on invoices.', async ({ page }) => {
+  // setup
+  await bahmni.navigateToLabSamples();
+  await bahmni.createLabOrder();
+
+  // replay
+  await odoo.open();
+  await odoo.navigateToInvoice();
+  await odoo.navigateToOtherInfo();
+  await expect(page.getByRole('textbox', { name: /cash rounding method/i })).toHaveValue('Rounding UP');
+  await odoo.navigateToInvoiceLines();
+  await odoo.createInvoice();
+
+  // verify
+  await odoo.navigateToInvoice();
+  await page.locator('input.o_searchview_input').type(`${patientName.givenName + ' ' + patientName.familyName}`);
+  await page.locator('input.o_searchview_input').press('Enter');
+  await expect(page.locator('tr.o_data_row:nth-child(1) td:nth-child(8)')).toContainText('25.00');
+});
+
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });

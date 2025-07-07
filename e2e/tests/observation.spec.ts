@@ -694,7 +694,6 @@ test('Health history form should save observations.', async ({ page }) => {
   await expect(page.locator('#observationSection').getByText('26', {exact: true}).nth(0)).toBeVisible();
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });

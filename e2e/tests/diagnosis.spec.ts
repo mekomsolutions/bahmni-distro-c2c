@@ -50,7 +50,6 @@ test('Create and revise a diagnosis.', async ({ page }) => {
   await expect(page.locator('#certainty')).toContainText(/confirmed/i);
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({}) => {
   await bahmni.voidPatient();
-  await page.close();
 });
