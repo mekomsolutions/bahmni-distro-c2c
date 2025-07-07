@@ -42,6 +42,8 @@ The target version of OpenMRS Core.
     <li>Added Malaria Microscopic Test.</li>
     <li>Improved README by making release versions collapsible.</li>
     <li>Added extension for post-natale visit.</li>
+    <li>Added e2e test for odoo auto rounding.</li>
+    <li>Upgraded Playwright version to 1.53.2</li>
   </ul>
 </details>
 
