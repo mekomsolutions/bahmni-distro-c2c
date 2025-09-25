@@ -1,5 +1,10 @@
 id,name,categ_id/id,type,purchase_ok,invoice_policy
 init.22134922-63af-4790-937a-bb191d399792,Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.03ac7e9b-dba4-4c09-a8df-1f1b7b2cbd1c,Acute Respiratory Infections Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.7ee1f81e-6ff3-4bd3-a429-f3d8a04547b0,Anemia Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.bf934c30-0721-42dd-96b3-306a9d6ac6cd,Diabetes Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.8b5a0e9c-f390-4b9d-a8f5-efefde552b9b,Hypertension Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
+init.1c47e52c-0d2e-4a3b-a21d-07ddcf4c3276,Postnatal Coupon,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
 init.4b310fe5-ddc1-42a9-bf25-7c934a540fee,H2 MHP,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
 init.391efe80-9851-4e9b-8811-d4af3d5a4ff4,H3 MHP,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
 init.2e916ab7-486d-42be-a86a-8b642334d1eb,H6 MHP,product.categ_services_exoneration_orders,service,FALSE,Ordered quantities
