@@ -30,6 +30,13 @@ The target version of OpenMRS Core.
 ## Release Notes
 
 <details>
+  <summary><b>Version 2.2.0</b></summary>
+   <ul>
+    <li>Added coupons for ARI, Anemia, Diabetes, Hypertension, and Postnatal.</li>
+  </ul>
+</details>
+
+<details>
   <summary><b>Version 2.1.0</b></summary>
    <ul>
     <li>Used shared GA workflows to build and publish + periodically check dependency changes.</li>
